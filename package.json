@@ -1,0 +1,28 @@
+{
+  "name": "ihsancloud-landing",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro check && astro build && node scripts/prepare-sites.mjs",
+    "preview": "astro preview",
+    "check": "astro check"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "latest",
+    "@fontsource-variable/inter": "latest",
+    "@fontsource-variable/manrope": "latest",
+    "@tailwindcss/vite": "latest",
+    "astro": "latest",
+    "@lucide/astro": "latest",
+    "resend": "latest",
+    "tailwindcss": "latest",
+    "zod": "latest"
+  },
+  "devDependencies": {
+    "@astrojs/check": "latest",
+    "@types/node": "latest",
+    "typescript": "latest"
+  }
+}

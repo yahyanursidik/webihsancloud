@@ -1,0 +1,49 @@
+<script>
+  document.querySelectorAll<HTMLFormElement>("form[data-async-form]").forEach((form) => {
+    const submit = form.querySelector<HTMLButtonElement>('button[type="submit"]');
+    const status = form.querySelector<HTMLElement>("[data-form-status]");
+    const originalLabel = submit?.textContent || "Kirim";
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      status?.removeAttribute("data-state");
+      if (!form.reportValidity()) return;
+
+      if (submit) {
+        submit.disabled = true;
+        submit.textContent = "Mengirim…";
+      }
+
+      const formData = new FormData(form);
+      const payload = Object.fromEntries(formData.entries());
+
+      try {
+        const response = await fetch(form.action, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        });
+        const result = await response.json().catch(() => ({}));
+        if (!response.ok) throw new Error(result.message || "Pengiriman belum berhasil. Silakan coba lagi.");
+
+        if (status) {
+          status.dataset.state = "success";
+          status.textContent = result.message || "Terima kasih. Data Anda sudah kami terima.";
+          status.focus();
+        }
+        form.reset();
+      } catch (error) {
+        if (status) {
+          status.dataset.state = "error";
+          status.textContent = error instanceof Error ? error.message : "Terjadi kendala. Silakan coba lagi.";
+          status.focus();
+        }
+      } finally {
+        if (submit) {
+          submit.disabled = false;
+          submit.textContent = originalLabel;
+        }
+      }
+    });
+  });
+</script>

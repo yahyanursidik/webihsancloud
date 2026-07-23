@@ -1,0 +1,54 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import InnerPageHero from "../components/InnerPageHero.astro";
+---
+
+<BaseLayout
+  title="Kebijakan Privasi — IhsanCloud"
+  description="Kebijakan privasi IhsanCloud mengenai pengumpulan dan penggunaan data pengunjung, lembaga, serta donatur."
+>
+  <InnerPageHero
+    eyebrow="Legal"
+    title="Kebijakan privasi."
+    description="Ringkasan awal mengenai cara IhsanCloud menangani data yang dikirimkan melalui situs ini."
+  />
+  <article class="container legal section">
+    <p class="notice"><strong>Catatan:</strong> Dokumen ini adalah draf operasional awal dan perlu ditinjau oleh penanggung jawab hukum sebelum peluncuran publik.</p>
+    <h2>Data yang kami kumpulkan</h2>
+    <p>Kami dapat mengumpulkan informasi yang Anda berikan melalui formulir pendaftaran lembaga, formulir minat donasi, dan komunikasi langsung, seperti nama, email, nomor WhatsApp, profil lembaga, serta kebutuhan layanan.</p>
+    <h2>Tujuan penggunaan</h2>
+    <p>Data digunakan untuk menindaklanjuti pengajuan, memberikan informasi layanan, mengelola komunikasi donatur, meningkatkan produk, menjaga keamanan, dan memenuhi kewajiban administratif yang berlaku.</p>
+    <h2>Berbagi data</h2>
+    <p>Kami tidak menjual data pribadi. Data hanya dibagikan kepada penyedia layanan yang diperlukan untuk operasional, atau ketika diwajibkan oleh hukum, dengan perlindungan yang wajar.</p>
+    <h2>Penyimpanan dan keamanan</h2>
+    <p>Data disimpan selama diperlukan untuk tujuan yang dijelaskan. Kami menerapkan kontrol akses dan praktik keamanan yang wajar, namun tidak ada metode penyimpanan atau transmisi yang sepenuhnya bebas risiko.</p>
+    <h2>Hak Anda</h2>
+    <p>Anda dapat meminta akses, koreksi, atau penghapusan data yang Anda berikan, sepanjang tidak bertentangan dengan kewajiban hukum dan kebutuhan administrasi yang sah.</p>
+    <h2>Perubahan kebijakan</h2>
+    <p>Kebijakan dapat diperbarui mengikuti perkembangan layanan dan ketentuan yang berlaku. Tanggal pembaruan akan dicantumkan pada versi publik.</p>
+  </article>
+</BaseLayout>
+
+<style>
+  .legal {
+    max-width: 820px;
+  }
+
+  .legal h2 {
+    margin: 2.4rem 0 0.55rem;
+    color: var(--olive);
+    font-family: "Manrope Variable", sans-serif;
+    font-size: 1.45rem;
+  }
+
+  .legal p {
+    color: #536058;
+  }
+
+  .notice {
+    border-left: 3px solid var(--gold);
+    background: var(--sand);
+    padding: 1rem 1.2rem;
+    font-size: 0.86rem;
+  }
+</style>

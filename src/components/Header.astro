@@ -1,0 +1,211 @@
+---
+import { Menu, X } from "@lucide/astro";
+import Logo from "./Logo.astro";
+---
+
+<div class="announcement">
+  <div class="container">
+    <span>Program lembaga perintis IhsanCloud telah dibuka.</span>
+    <a href="/daftar">Ajukan lembaga <span aria-hidden="true">→</span></a>
+  </div>
+</div>
+
+<header class="site-header">
+  <div class="container nav-shell">
+    <Logo />
+    <nav class="desktop-nav" aria-label="Navigasi utama">
+      <a href="/#tentang">Tentang</a>
+      <a href="/#solusi">Solusi</a>
+      <a href="/#produk">Produk</a>
+      <a href="/#dampak">Dampak</a>
+      <a href="/keberlanjutan">Keberlanjutan</a>
+      <a href="/#faq">FAQ</a>
+    </nav>
+    <div class="desktop-actions">
+      <a class="login" href="https://app.ihsancloud.id">Masuk</a>
+      <a class="button button-primary" href="/daftar">Daftarkan Lembaga</a>
+      <a class="donate-link" href="/donasi">Jadi Donatur</a>
+    </div>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Buka navigasi">
+      <Menu class="menu-icon" size={22} aria-hidden="true" />
+      <X class="close-icon" size={22} aria-hidden="true" />
+    </button>
+  </div>
+  <div id="mobile-menu" class="mobile-menu" hidden>
+    <nav class="container" aria-label="Navigasi seluler">
+      <a href="/#tentang">Tentang</a>
+      <a href="/#solusi">Solusi</a>
+      <a href="/#produk">Produk</a>
+      <a href="/#dampak">Dampak</a>
+      <a href="/keberlanjutan">Keberlanjutan</a>
+      <a href="/#faq">FAQ</a>
+      <div class="mobile-actions">
+        <a class="button button-primary" href="/daftar">Daftarkan Lembaga</a>
+        <a class="button button-secondary" href="/donasi">Jadi Donatur</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const toggle = document.querySelector<HTMLButtonElement>(".menu-toggle");
+  const menu = document.querySelector<HTMLElement>("#mobile-menu");
+
+  toggle?.addEventListener("click", () => {
+    const expanded = toggle.getAttribute("aria-expanded") === "true";
+    toggle.setAttribute("aria-expanded", String(!expanded));
+    toggle.setAttribute("aria-label", expanded ? "Buka navigasi" : "Tutup navigasi");
+    if (menu) menu.hidden = expanded;
+  });
+
+  menu?.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
+      toggle?.setAttribute("aria-expanded", "false");
+      if (menu) menu.hidden = true;
+    });
+  });
+</script>
+
+<style>
+  .announcement {
+    background: var(--olive);
+    color: var(--ivory);
+    font-size: 0.78rem;
+  }
+
+  .announcement .container {
+    display: flex;
+    min-height: 38px;
+    align-items: center;
+    justify-content: center;
+    gap: 0.7rem 1.1rem;
+    text-align: center;
+  }
+
+  .announcement a {
+    color: #e4c985;
+    font-weight: 750;
+    white-space: nowrap;
+  }
+
+  .site-header {
+    position: sticky;
+    z-index: 50;
+    top: 0;
+    border-bottom: 1px solid var(--line);
+    background: rgba(247, 244, 236, 0.92);
+    backdrop-filter: blur(14px);
+  }
+
+  .nav-shell {
+    display: flex;
+    min-height: 74px;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.2rem;
+  }
+
+  .desktop-nav,
+  .desktop-actions {
+    display: none;
+  }
+
+  .menu-toggle {
+    display: grid;
+    width: 42px;
+    height: 42px;
+    place-items: center;
+    border: 1px solid var(--line);
+    border-radius: 0.5rem;
+    background: transparent;
+    color: var(--olive);
+  }
+
+  .close-icon {
+    display: none;
+  }
+
+  .menu-toggle[aria-expanded="true"] .menu-icon {
+    display: none;
+  }
+
+  .menu-toggle[aria-expanded="true"] .close-icon {
+    display: block;
+  }
+
+  .mobile-menu {
+    border-top: 1px solid var(--line);
+    background: var(--ivory);
+  }
+
+  .mobile-menu[hidden] {
+    display: none;
+  }
+
+  .mobile-menu nav {
+    display: grid;
+    gap: 0;
+    padding-block: 0.6rem 1.4rem;
+  }
+
+  .mobile-menu nav > a {
+    border-bottom: 1px solid var(--line);
+    padding: 0.8rem 0;
+    color: var(--olive);
+    font-weight: 650;
+  }
+
+  .mobile-actions {
+    display: grid;
+    gap: 0.65rem;
+    padding-top: 1rem;
+  }
+
+  @media (min-width: 980px) {
+    .desktop-nav,
+    .desktop-actions {
+      display: flex;
+      align-items: center;
+    }
+
+    .desktop-nav {
+      gap: clamp(0.85rem, 1.6vw, 1.6rem);
+      margin-left: auto;
+      font-size: 0.8rem;
+      font-weight: 650;
+    }
+
+    .desktop-nav a {
+      color: #536058;
+    }
+
+    .desktop-nav a:hover {
+      color: var(--olive);
+    }
+
+    .desktop-actions {
+      gap: 0.85rem;
+    }
+
+    .desktop-actions .button {
+      min-height: 42px;
+      padding-inline: 0.9rem;
+      font-size: 0.78rem;
+    }
+
+    .login,
+    .donate-link {
+      font-size: 0.78rem;
+      font-weight: 750;
+    }
+
+    .donate-link {
+      color: #765f2e;
+    }
+
+    .menu-toggle,
+    .mobile-menu {
+      display: none;
+    }
+  }
+</style>

@@ -1,0 +1,248 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import InnerPageHero from "../components/InnerPageHero.astro";
+import FormHandler from "../components/FormHandler.astro";
+
+const turnstileKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY;
+---
+
+<BaseLayout
+  title="Daftarkan Lembaga — IhsanCloud"
+  description="Ajukan lembaga Anda untuk menggunakan fitur inti IhsanCloud secara gratis atau mendapatkan pendampingan implementasi."
+>
+  <InnerPageHero
+    eyebrow="Pendaftaran lembaga"
+    title="Mulai menata lembaga secara bertahap."
+    description="Ceritakan profil dan kebutuhan utama lembaga Anda. Tim IhsanCloud akan meninjau kesiapan, prioritas, dan cara memulai yang paling sesuai."
+  />
+  <section class="section form-section">
+    <div class="container page-grid">
+      <aside>
+        <span class="aside-number">01</span>
+        <h2>Apa yang terjadi setelah Anda mengirim formulir?</h2>
+        <ol>
+          <li><span>1</span>Profil lembaga ditinjau</li>
+          <li><span>2</span>Kebutuhan utama dipetakan</li>
+          <li><span>3</span>Tim menghubungi penanggung jawab</li>
+          <li><span>4</span>Aktivasi atau pendampingan disepakati</li>
+        </ol>
+        <p>Donasi tidak menjadi syarat untuk memperoleh akses fitur inti.</p>
+      </aside>
+      <div class="form-card">
+        <div class="form-heading">
+          <span>Formulir pengajuan</span>
+          <h2>Profil lembaga</h2>
+          <p>Field bertanda * wajib diisi.</p>
+        </div>
+        <form class="form-grid two" action="/api/register" method="post" data-async-form>
+          <div class="field full">
+            <label for="institutionName">Nama lembaga *</label>
+            <input id="institutionName" name="institutionName" autocomplete="organization" required />
+          </div>
+          <div class="field">
+            <label for="institutionType">Jenis lembaga *</label>
+            <select id="institutionType" name="institutionType" required>
+              <option value="">Pilih jenis</option>
+              <option>Sekolah</option>
+              <option>Ma’had / Pesantren</option>
+              <option>TPQ / Rumah Qur’an</option>
+              <option>Masjid / DKM</option>
+              <option>Yayasan / Lembaga Dakwah</option>
+              <option>Lainnya</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="city">Kota / kabupaten *</label>
+            <input id="city" name="city" autocomplete="address-level2" required />
+          </div>
+          <div class="field">
+            <label for="contactName">Nama penanggung jawab *</label>
+            <input id="contactName" name="contactName" autocomplete="name" required />
+          </div>
+          <div class="field">
+            <label for="role">Jabatan *</label>
+            <input id="role" name="role" autocomplete="organization-title" required />
+          </div>
+          <div class="field">
+            <label for="email">Email *</label>
+            <input id="email" name="email" type="email" autocomplete="email" required />
+          </div>
+          <div class="field">
+            <label for="whatsapp">WhatsApp *</label>
+            <input id="whatsapp" name="whatsapp" type="tel" autocomplete="tel" inputmode="tel" required />
+          </div>
+          <div class="field">
+            <label for="beneficiaries">Jumlah peserta didik / jamaah</label>
+            <input id="beneficiaries" name="beneficiaries" type="number" min="0" inputmode="numeric" />
+          </div>
+          <div class="field">
+            <label for="staff">Jumlah pengajar / pengurus</label>
+            <input id="staff" name="staff" type="number" min="0" inputmode="numeric" />
+          </div>
+          <div class="field full">
+            <label for="currentSystem">Sistem yang digunakan saat ini</label>
+            <input id="currentSystem" name="currentSystem" placeholder="Contoh: spreadsheet, aplikasi tertentu, atau masih manual" />
+          </div>
+          <div class="field full">
+            <label for="primaryNeed">Kebutuhan utama *</label>
+            <textarea id="primaryNeed" name="primaryNeed" required placeholder="Ceritakan pekerjaan atau proses yang paling ingin ditata."></textarea>
+          </div>
+          <div class="field full">
+            <label for="service">Model layanan yang diminati</label>
+            <select id="service" name="service">
+              <option value="mandiri">Akses mandiri</option>
+              <option value="pendampingan">Pendampingan</option>
+              <option value="institusi">Kebutuhan institusi</option>
+              <option value="belum-tahu">Belum tahu, ingin didiskusikan</option>
+            </select>
+          </div>
+          <div class="field honey" aria-hidden="true">
+            <label for="website">Website</label>
+            <input id="website" name="website" tabindex="-1" autocomplete="off" />
+          </div>
+          {turnstileKey && <div class="cf-turnstile full" data-sitekey={turnstileKey}></div>}
+          <label class="checkbox full">
+            <input type="checkbox" name="privacyAccepted" value="true" required />
+            <span>Saya menyetujui <a href="/privasi">kebijakan privasi</a> dan mengizinkan tim menghubungi saya terkait pengajuan ini. *</span>
+          </label>
+          <div class="form-status full" data-form-status tabindex="-1" role="status" aria-live="polite"></div>
+          <div class="full form-submit">
+            <button class="button button-primary" type="submit">Ajukan Akses IhsanCloud</button>
+            <small>Kami hanya menggunakan data untuk menindaklanjuti pengajuan.</small>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+  {turnstileKey && <script is:inline src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>}
+  <FormHandler />
+</BaseLayout>
+
+<style>
+  .form-section {
+    background: #fffdf8;
+  }
+
+  .page-grid {
+    display: grid;
+    gap: 3rem;
+  }
+
+  aside {
+    align-self: start;
+  }
+
+  .aside-number {
+    color: var(--gold);
+    font-size: 0.72rem;
+    font-weight: 800;
+  }
+
+  aside h2 {
+    margin: 1rem 0 1.5rem;
+    color: var(--olive);
+    font-family: "Manrope Variable", sans-serif;
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    line-height: 1.12;
+  }
+
+  aside ol {
+    display: grid;
+    gap: 0;
+    margin: 0;
+    padding: 0;
+    border-top: 1px solid var(--line);
+    list-style: none;
+  }
+
+  aside li {
+    display: grid;
+    grid-template-columns: 2rem 1fr;
+    gap: 0.6rem;
+    border-bottom: 1px solid var(--line);
+    padding: 0.85rem 0;
+    color: #4f5c54;
+    font-size: 0.86rem;
+  }
+
+  aside li span {
+    color: var(--gold);
+    font-size: 0.72rem;
+    font-weight: 800;
+  }
+
+  aside > p {
+    margin-top: 1.4rem;
+    border-left: 3px solid var(--gold);
+    padding-left: 0.9rem;
+    color: var(--forest);
+    font-size: 0.84rem;
+    font-weight: 650;
+  }
+
+  .form-card {
+    border: 1px solid var(--line);
+    background: var(--ivory);
+    padding: clamp(1.25rem, 4vw, 2.7rem);
+  }
+
+  .form-heading {
+    margin-bottom: 2rem;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 1.2rem;
+  }
+
+  .form-heading > span {
+    color: #896f3c;
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .form-heading h2 {
+    margin: 0.4rem 0 0;
+    color: var(--olive);
+    font-family: "Manrope Variable", sans-serif;
+    font-size: 2rem;
+  }
+
+  .form-heading p {
+    margin: 0.3rem 0 0;
+    color: var(--muted);
+    font-size: 0.8rem;
+  }
+
+  .checkbox a {
+    text-decoration: underline;
+  }
+
+  .honey {
+    position: absolute;
+    left: -9999px;
+  }
+
+  .form-submit {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.6rem;
+  }
+
+  .form-submit small {
+    color: var(--muted);
+    font-size: 0.72rem;
+  }
+
+  @media (min-width: 900px) {
+    .page-grid {
+      grid-template-columns: 0.72fr 1.28fr;
+      gap: clamp(3rem, 7vw, 7rem);
+    }
+
+    aside {
+      position: sticky;
+      top: 8rem;
+    }
+  }
+</style>

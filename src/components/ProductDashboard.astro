@@ -1,0 +1,403 @@
+---
+import { Bell, CalendarDays, CircleCheck, Ellipsis, TrendingUp, Users, WalletCards } from "@lucide/astro";
+---
+
+<div class="dashboard-frame" aria-label="Pratinjau dashboard IhsanCloud dengan data demonstrasi">
+  <div class="dashboard-top">
+    <div class="dash-brand"><span aria-hidden="true"></span> IhsanCloud</div>
+    <div class="demo-label">Data demonstrasi</div>
+    <div class="dash-avatar">AP</div>
+  </div>
+  <div class="dashboard-body">
+    <aside aria-hidden="true">
+      <i class="active"></i><i></i><i></i><i></i><i></i><i></i>
+    </aside>
+    <div class="dash-content">
+      <div class="dash-heading">
+        <div>
+          <small>Senin, 20 Juli 2026</small>
+          <h2>Assalamu’alaikum, Ahmad</h2>
+        </div>
+        <button aria-label="Notifikasi"><Bell size={17} /></button>
+      </div>
+      <div class="stat-row">
+        <article>
+          <span><Users size={16} /></span>
+          <small>Santri aktif</small>
+          <strong>284</strong>
+          <em>+12 semester ini</em>
+        </article>
+        <article>
+          <span><CircleCheck size={16} /></span>
+          <small>Kehadiran hari ini</small>
+          <strong>94%</strong>
+          <em>267 santri hadir</em>
+        </article>
+        <article>
+          <span><TrendingUp size={16} /></span>
+          <small>Capaian pekan ini</small>
+          <strong>78%</strong>
+          <em>Dalam target</em>
+        </article>
+      </div>
+      <div class="dash-grid">
+        <article class="progress-card">
+          <div class="card-title">
+            <div><small>Perkembangan pembelajaran</small><strong>Ringkasan kelas</strong></div>
+            <Ellipsis size={17} />
+          </div>
+          <div class="chart" aria-hidden="true">
+            <div style="height:38%"></div><div style="height:52%"></div><div style="height:44%"></div><div style="height:68%"></div><div style="height:59%"></div><div style="height:82%"></div><div style="height:74%"></div>
+          </div>
+          <div class="chart-labels"><span>Sen</span><span>Sel</span><span>Rab</span><span>Kam</span><span>Jum</span><span>Sab</span><span>Ahd</span></div>
+        </article>
+        <article class="agenda-card">
+          <div class="card-title">
+            <div><small>Agenda terdekat</small><strong>Hari ini</strong></div>
+            <CalendarDays size={17} />
+          </div>
+          <ul>
+            <li><b>08:00</b><span>Rapat evaluasi akademik<small>Ruang guru</small></span></li>
+            <li><b>10:30</b><span>Observasi kelas tahsin<small>Kelas 7B</small></span></li>
+            <li><b>13:00</b><span>Verifikasi laporan wali<small>Perlu tindak lanjut</small></span></li>
+          </ul>
+        </article>
+      </div>
+      <article class="task-card">
+        <div class="card-title">
+          <div><small>Tugas operator</small><strong>Memerlukan perhatian</strong></div>
+          <WalletCards size={17} />
+        </div>
+        <div class="task-row"><span>Lengkapi data wali santri baru</span><b>8 data</b><i>Hari ini</i></div>
+        <div class="task-row"><span>Verifikasi izin kepulangan</span><b>3 permintaan</b><i>Besok</i></div>
+      </article>
+    </div>
+  </div>
+</div>
+
+<style>
+  .dashboard-frame {
+    overflow: hidden;
+    border: 1px solid rgba(38, 55, 45, 0.24);
+    border-radius: 0.9rem;
+    background: #f8faf7;
+    box-shadow: 0 30px 80px rgba(26, 42, 33, 0.17);
+    color: #27342c;
+    font-size: 10px;
+  }
+
+  .dashboard-top {
+    display: grid;
+    min-height: 48px;
+    grid-template-columns: 1fr auto auto;
+    align-items: center;
+    gap: 0.9rem;
+    border-bottom: 1px solid #e3e8e3;
+    background: white;
+    padding: 0 1rem;
+  }
+
+  .dash-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    color: var(--olive);
+    font-family: "Manrope Variable", sans-serif;
+    font-size: 11px;
+    font-weight: 800;
+  }
+
+  .dash-brand span {
+    width: 19px;
+    height: 19px;
+    border-radius: 5px;
+    background: var(--olive);
+    box-shadow: inset 6px 0 var(--ivory), inset -6px 0 var(--ivory);
+  }
+
+  .demo-label {
+    border: 1px solid #dfd4bc;
+    border-radius: 999px;
+    background: #fbf6e9;
+    color: #765f2e;
+    padding: 0.28rem 0.6rem;
+    font-size: 8px;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .dash-avatar {
+    display: grid;
+    width: 28px;
+    height: 28px;
+    place-items: center;
+    border-radius: 50%;
+    background: #dfe8df;
+    color: var(--olive);
+    font-size: 9px;
+    font-weight: 800;
+  }
+
+  .dashboard-body {
+    display: grid;
+    grid-template-columns: 42px 1fr;
+  }
+
+  aside {
+    display: grid;
+    align-content: start;
+    gap: 10px;
+    min-height: 440px;
+    border-right: 1px solid #e3e8e3;
+    background: white;
+    padding: 18px 12px;
+  }
+
+  aside i {
+    width: 17px;
+    height: 17px;
+    border-radius: 4px;
+    background: #e8ece8;
+  }
+
+  aside i.active {
+    background: var(--forest);
+  }
+
+  .dash-content {
+    overflow: hidden;
+    padding: 1.1rem;
+  }
+
+  .dash-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 0.9rem;
+  }
+
+  .dash-heading small,
+  .card-title small {
+    display: block;
+    color: #7a857e;
+    font-size: 8px;
+  }
+
+  .dash-heading h2 {
+    margin: 0.12rem 0 0;
+    font-family: "Manrope Variable", sans-serif;
+    font-size: 15px;
+  }
+
+  .dash-heading button {
+    display: grid;
+    width: 30px;
+    height: 30px;
+    place-items: center;
+    border: 1px solid #e3e8e3;
+    border-radius: 7px;
+    background: white;
+    color: var(--forest);
+  }
+
+  .stat-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.65rem;
+  }
+
+  .stat-row article,
+  .dash-grid article,
+  .task-card {
+    border: 1px solid #e0e6e0;
+    border-radius: 8px;
+    background: white;
+  }
+
+  .stat-row article {
+    position: relative;
+    display: grid;
+    padding: 0.75rem;
+  }
+
+  .stat-row article > span {
+    position: absolute;
+    top: 0.7rem;
+    right: 0.7rem;
+    display: grid;
+    width: 27px;
+    height: 27px;
+    place-items: center;
+    border-radius: 7px;
+    background: #eef3ee;
+    color: var(--forest);
+  }
+
+  .stat-row small {
+    color: #77827a;
+    font-size: 8px;
+  }
+
+  .stat-row strong {
+    margin-top: 0.35rem;
+    font-family: "Manrope Variable", sans-serif;
+    font-size: 20px;
+    line-height: 1;
+  }
+
+  .stat-row em {
+    margin-top: 0.3rem;
+    color: #65806d;
+    font-size: 7px;
+    font-style: normal;
+  }
+
+  .dash-grid {
+    display: grid;
+    grid-template-columns: 1.45fr 1fr;
+    gap: 0.65rem;
+    margin-top: 0.65rem;
+  }
+
+  .dash-grid article,
+  .task-card {
+    padding: 0.8rem;
+  }
+
+  .card-title {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 0.5rem;
+  }
+
+  .card-title strong {
+    display: block;
+    margin-top: 0.12rem;
+    font-size: 9px;
+  }
+
+  .chart {
+    display: flex;
+    height: 76px;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 5px;
+    margin-top: 0.8rem;
+    border-bottom: 1px solid #e6ebe6;
+  }
+
+  .chart div {
+    width: 100%;
+    border-radius: 3px 3px 0 0;
+    background: #76917f;
+  }
+
+  .chart div:nth-child(6) {
+    background: var(--gold);
+  }
+
+  .chart-labels {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0.3rem;
+    color: #8b958e;
+    font-size: 6px;
+  }
+
+  .agenda-card ul {
+    display: grid;
+    gap: 0.5rem;
+    margin: 0.7rem 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .agenda-card li {
+    display: grid;
+    grid-template-columns: 31px 1fr;
+    gap: 0.45rem;
+    border-top: 1px solid #edf0ed;
+    padding-top: 0.4rem;
+  }
+
+  .agenda-card li b {
+    color: var(--forest);
+    font-size: 7px;
+  }
+
+  .agenda-card li span {
+    font-size: 7px;
+    font-weight: 750;
+  }
+
+  .agenda-card li small {
+    display: block;
+    color: #879189;
+    font-size: 6px;
+    font-weight: 400;
+  }
+
+  .task-card {
+    margin-top: 0.65rem;
+  }
+
+  .task-row {
+    display: grid;
+    grid-template-columns: 1.6fr 0.7fr auto;
+    gap: 0.5rem;
+    border-top: 1px solid #edf0ed;
+    padding: 0.45rem 0;
+    font-size: 7px;
+  }
+
+  .task-row b {
+    color: var(--forest);
+  }
+
+  .task-row i {
+    color: #8b6d30;
+    font-style: normal;
+  }
+
+  @media (max-width: 520px) {
+    .dashboard-frame {
+      font-size: 8px;
+    }
+
+    .dashboard-body {
+      grid-template-columns: 30px 1fr;
+    }
+
+    aside {
+      min-height: 390px;
+      padding-inline: 7px;
+    }
+
+    .dash-content {
+      padding: 0.75rem;
+    }
+
+    .stat-row article {
+      padding: 0.55rem;
+    }
+
+    .stat-row article > span {
+      display: none;
+    }
+
+    .stat-row strong {
+      font-size: 15px;
+    }
+
+    .agenda-card {
+      display: none;
+    }
+
+    .dash-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

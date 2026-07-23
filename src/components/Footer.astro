@@ -1,0 +1,121 @@
+---
+import Logo from "./Logo.astro";
+
+const groups = [
+  { title: "Produk", links: ["Ihsan School", "Ihsan Ma’had", "Ihsan TPQ", "Ihsan Masjid", "Ihsan Foundation"] },
+  { title: "Program", links: ["Sahabat IhsanCloud", "Sponsor Satu Lembaga", "Mitra Infrastruktur", "Mitra Pelatihan", "Mitra Implementasi"] },
+  { title: "Sumber daya", links: ["Dokumentasi", "Panduan Operator", "Roadmap", "Status Sistem", "Catatan Pembaruan"] },
+];
+---
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <Logo light={true} />
+      <p>IhsanCloud dikembangkan sebagai ikhtiar pelayanan digital untuk meningkatkan mutu lembaga pendidikan dan dakwah.</p>
+      <div class="footer-ctas">
+        <a class="button button-light" href="/daftar">Daftarkan Lembaga</a>
+        <a class="button button-ghost-light" href="/donasi">Jadi Donatur</a>
+      </div>
+    </div>
+    {groups.map((group) => (
+      <div>
+        <h2>{group.title}</h2>
+        <ul>
+          {group.links.map((link) => (
+            <li><a href="/#">{link}</a></li>
+          ))}
+        </ul>
+      </div>
+    ))}
+  </div>
+  <div class="container footer-bottom">
+    <span>© {new Date().getFullYear()} IhsanCloud</span>
+    <nav aria-label="Legal">
+      <a href="/privasi">Privasi</a>
+      <a href="/ketentuan">Ketentuan</a>
+      <a href="/keberlanjutan">Keberlanjutan</a>
+    </nav>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background: #1d2b23;
+    color: rgba(247, 244, 236, 0.74);
+    padding-top: clamp(4rem, 8vw, 7rem);
+  }
+
+  .footer-grid {
+    display: grid;
+    gap: 3rem;
+  }
+
+  .footer-brand {
+    max-width: 31rem;
+  }
+
+  .footer-brand p {
+    margin: 1.4rem 0 1.7rem;
+    color: rgba(247, 244, 236, 0.66);
+  }
+
+  .footer-ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.65rem;
+  }
+
+  h2 {
+    margin: 0 0 1rem;
+    color: var(--ivory);
+    font-family: "Manrope Variable", sans-serif;
+    font-size: 0.78rem;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+  }
+
+  ul {
+    display: grid;
+    gap: 0.52rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  li {
+    font-size: 0.86rem;
+  }
+
+  a:hover {
+    color: var(--ivory);
+  }
+
+  .footer-bottom {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    margin-top: 4rem;
+    padding-block: 1.25rem;
+    border-top: 1px solid rgba(247, 244, 236, 0.13);
+    font-size: 0.76rem;
+  }
+
+  .footer-bottom nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  @media (min-width: 760px) {
+    .footer-grid {
+      grid-template-columns: 2fr repeat(3, 1fr);
+    }
+
+    .footer-bottom {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+</style>

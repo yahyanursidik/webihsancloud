@@ -1,0 +1,179 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import InnerPageHero from "../components/InnerPageHero.astro";
+import { ArrowRight, ChartColumn, BookOpenCheck, CloudCog, CodeXml, Database, ShieldCheck } from "@lucide/astro";
+
+const allocations = [
+  { icon: CloudCog, title: "Infrastruktur cloud", text: "Server, jaringan, email, monitoring, dan ketersediaan layanan." },
+  { icon: Database, title: "Data & penyimpanan", text: "Database, dokumen, backup, dan kapasitas penyimpanan." },
+  { icon: ShieldCheck, title: "Pemeliharaan & keamanan", text: "Pembaruan, perbaikan bug, pengujian, dan mitigasi risiko." },
+  { icon: CodeXml, title: "Pengembangan produk", text: "Riset kebutuhan, desain, rekayasa perangkat lunak, dan quality assurance." },
+  { icon: BookOpenCheck, title: "Pelatihan & dokumentasi", text: "Panduan, orientasi operator, dan materi untuk pengguna." },
+  { icon: ChartColumn, title: "Dukungan & kemitraan", text: "Pendampingan lembaga, dukungan teknis, sosialisasi, dan pengembangan mitra." },
+];
+---
+
+<BaseLayout
+  title="Keberlanjutan dan Transparansi — IhsanCloud"
+  description="Pelajari bagaimana IhsanCloud menjaga layanan gratis tetap berkelanjutan melalui donasi operasional, kemitraan, dan layanan profesional."
+>
+  <InnerPageHero
+    eyebrow="Keberlanjutan"
+    title="Gratis bagi lembaga, dijaga bersama."
+    description="IhsanCloud tidak membebankan biaya lisensi untuk fitur inti. Operasionalnya dijaga melalui donasi, sponsorship, kemitraan, pelatihan, implementasi, dan layanan profesional."
+  />
+  <section class="section sustainability">
+    <div class="container">
+      <div class="intro-grid">
+        <h2 class="heading">Biaya nyata di balik layanan yang gratis.</h2>
+        <div>
+          <p class="lead">Setiap ruang kerja lembaga membutuhkan infrastruktur, keamanan, pemeliharaan, dukungan, dan pengembangan yang berjalan terus-menerus.</p>
+          <p>Kami akan menyampaikan laporan berkala saat program donasi telah berjalan dan data keuangan telah diverifikasi. Halaman ini tidak menampilkan angka simulasi sebagai capaian nyata.</p>
+        </div>
+      </div>
+      <div class="allocation-grid">
+        {allocations.map(({ icon: Icon, title, text }, index) => (
+          <article>
+            <div class="allocation-top"><Icon size={22} /><span>{String(index + 1).padStart(2, "0")}</span></div>
+            <h3>{title}</h3>
+            <p>{text}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+  <section class="section report-section">
+    <div class="container report-grid">
+      <div>
+        <div class="eyebrow">Kerangka laporan</div>
+        <h2 class="heading">Apa yang akan kami laporkan.</h2>
+      </div>
+      <div class="report-list">
+        {["Jumlah donasi masuk", "Biaya server & penyimpanan", "Pemeliharaan & keamanan", "Pengembangan produk", "Pelatihan & pendampingan", "Jumlah lembaga aktif", "Jumlah lembaga yang disubsidi", "Saldo operasional"].map((item, index) => (
+          <div><span>{String(index + 1).padStart(2, "0")}</span>{item}</div>
+        ))}
+      </div>
+    </div>
+  </section>
+  <section class="section principle-section">
+    <div class="container principle-grid">
+      <div>
+        <div class="eyebrow">Prinsip penting</div>
+        <h2 class="heading">Donasi sukarela, layanan inti tetap terbuka.</h2>
+      </div>
+      <div>
+        <p class="lead">Lembaga pengguna tidak diwajibkan menjadi donatur. Dukungan diberikan secara sukarela dan tidak menentukan prioritas pelayanan dasar.</p>
+        <p>Istilah wakaf tidak digunakan sebelum tersedia tata kelola, akad, nazhir, dan mekanisme pelaporan yang sesuai.</p>
+        <a class="button button-primary" href="/donasi">Jadi Donatur Tetap <ArrowRight size={16} /></a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .sustainability {
+    background: #fffdf8;
+  }
+
+  .intro-grid,
+  .report-grid,
+  .principle-grid {
+    display: grid;
+    gap: 2.5rem;
+  }
+
+  .intro-grid p:last-child {
+    color: var(--muted);
+    font-size: 0.85rem;
+  }
+
+  .allocation-grid {
+    display: grid;
+    gap: 0.8rem;
+    margin-top: 4rem;
+  }
+
+  .allocation-grid article {
+    border: 1px solid var(--line);
+    background: var(--ivory);
+    padding: 1.4rem;
+  }
+
+  .allocation-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--forest);
+  }
+
+  .allocation-top span {
+    color: var(--gold);
+    font-size: 0.68rem;
+    font-weight: 800;
+  }
+
+  .allocation-grid h3 {
+    margin: 2.3rem 0 0.5rem;
+    color: var(--olive);
+    font-family: "Manrope Variable", sans-serif;
+    font-size: 1.15rem;
+  }
+
+  .allocation-grid p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.84rem;
+  }
+
+  .report-section {
+    background: var(--sand);
+  }
+
+  .report-list {
+    border-top: 1px solid rgba(38, 55, 45, 0.2);
+  }
+
+  .report-list div {
+    display: grid;
+    grid-template-columns: 3rem 1fr;
+    border-bottom: 1px solid rgba(38, 55, 45, 0.2);
+    padding: 0.9rem 0;
+    color: var(--olive);
+    font-family: "Manrope Variable", sans-serif;
+    font-weight: 650;
+  }
+
+  .report-list span {
+    color: var(--gold);
+    font-family: "Inter Variable", sans-serif;
+    font-size: 0.7rem;
+    font-weight: 800;
+  }
+
+  .principle-section {
+    background: #fffdf8;
+  }
+
+  .principle-grid .lead {
+    margin: 0;
+  }
+
+  .principle-grid p:not(.lead) {
+    margin: 1rem 0 1.5rem;
+    color: var(--muted);
+    font-size: 0.84rem;
+  }
+
+  @media (min-width: 760px) {
+    .intro-grid,
+    .report-grid,
+    .principle-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(4rem, 9vw, 9rem);
+    }
+
+    .allocation-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+</style>

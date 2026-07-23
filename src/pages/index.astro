@@ -1,0 +1,1456 @@
+---
+import {
+  ArrowRight,
+  ChartColumn,
+  BookOpenCheck,
+  Check,
+  ChevronDown,
+  ClipboardCheck,
+  CloudCog,
+  Database,
+  GraduationCap,
+  HeartHandshake,
+  Landmark,
+  LayoutDashboard,
+  MessageSquareText,
+  School,
+  ShieldCheck,
+  Sparkles,
+  Users,
+} from "@lucide/astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ProductDashboard from "../components/ProductDashboard.astro";
+import { faqs, products, roadmap, serviceModels } from "../data/site";
+
+const softwareJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  name: "IhsanCloud",
+  applicationCategory: "BusinessApplication",
+  operatingSystem: "Web",
+  offers: {
+    "@type": "Offer",
+    price: "0",
+    priceCurrency: "IDR",
+    description: "Fitur inti tersedia gratis bagi lembaga yang memenuhi ketentuan program.",
+  },
+};
+
+const problems = [
+  "Data tersebar di banyak spreadsheet",
+  "Pekerjaan administratif terus berulang",
+  "Laporan terlambat dan sulit dirangkum",
+  "Komunikasi penting tidak terdokumentasi",
+  "Pergantian pengurus mengganggu kesinambungan",
+  "Pimpinan sulit melihat kondisi menyeluruh",
+];
+
+const onboarding = [
+  ["01", "Ajukan lembaga", "Lengkapi profil dan kebutuhan utama lembaga."],
+  ["02", "Asesmen", "Kami meninjau kesiapan, pengguna, dan modul prioritas."],
+  ["03", "Aktivasi", "Dapatkan ruang kerja, akun admin, dan panduan awal."],
+  ["04", "Konfigurasi", "Masukkan data secara mandiri atau dengan pendampingan."],
+  ["05", "Pelatihan", "Orientasi bagi operator dan pengguna utama."],
+  ["06", "Gunakan bertahap", "Mulai dari kebutuhan terpenting, lalu tumbuh saat siap."],
+];
+---
+
+<BaseLayout
+  title="IhsanCloud — Ekosistem Digital Pendidikan dan Dakwah"
+  description="IhsanCloud membantu sekolah, ma’had, TPQ, masjid, yayasan, dan lembaga dakwah mengelola data dan pelayanan dalam satu ekosistem berbasis cloud."
+>
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(softwareJsonLd)} />
+
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <div class="eyebrow">Ekosistem digital pendidikan dan dakwah</div>
+        <h1 class="display">Menata amanah. Meningkatkan mutu pelayanan.</h1>
+        <p class="hero-lead">
+          IhsanCloud membantu sekolah, ma’had, TPQ, masjid, yayasan, dan lembaga dakwah mengelola data, pembelajaran, administrasi, SDM, jamaah, serta program dalam satu ekosistem berbasis cloud.
+        </p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="/daftar">Daftarkan Lembaga <ArrowRight size={17} /></a>
+          <a class="button button-secondary" href="/donasi">Jadi Donatur Tetap</a>
+        </div>
+        <p class="microcopy"><Sparkles size={15} /> Teknologinya gratis. Keberlanjutannya dijaga bersama.</p>
+      </div>
+      <div class="hero-visual">
+        <div class="visual-note"><span>01</span> Ruang kerja lembaga yang mudah dipahami</div>
+        <ProductDashboard />
+      </div>
+    </div>
+  </section>
+
+  <section id="tentang" class="section value-section">
+    <div class="container">
+      <div class="value-intro">
+        <div>
+          <div class="eyebrow">Mengapa IhsanCloud</div>
+          <h2 class="heading">Satu sistem, banyak penerima manfaat.</h2>
+        </div>
+        <p class="lead">Ketika tata kelola lembaga lebih tertib, guru dapat lebih fokus mengajar, pimpinan memperoleh informasi yang lebih baik, orang tua lebih mudah terhubung, dan data lembaga tidak lagi bergantung pada satu orang.</p>
+      </div>
+      <div class="principles">
+        <article><span>01</span><h3>Mudah digunakan</h3><p>Dirancang untuk beragam tingkat kemampuan digital.</p></article>
+        <article><span>02</span><h3>Terintegrasi</h3><p>Data dan proses kerja bertemu dalam satu ruang.</p></article>
+        <article><span>03</span><h3>Amanah</h3><p>Hak akses jelas dan aktivitas lebih mudah ditelusuri.</p></article>
+        <article><span>04</span><h3>Berkelanjutan</h3><p>Dijaga bersama lembaga, donatur, dan mitra.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section problem-section">
+    <div class="container problem-grid">
+      <div class="problem-copy">
+        <div class="eyebrow">Tantangan lembaga</div>
+        <h2 class="heading">Lembaga bertumbuh. Sistem kerjanya belum tentu ikut bertumbuh.</h2>
+        <p class="lead">Data siswa tersimpan di banyak file. Absensi dikirim melalui grup pesan. Ketika operator atau pengurus berganti, sebagian pengetahuan lembaga ikut hilang.</p>
+      </div>
+      <div class="problem-list">
+        {problems.map((problem, index) => (
+          <div><span>{String(index + 1).padStart(2, "0")}</span><p>{problem}</p></div>
+        ))}
+      </div>
+    </div>
+    <div class="container answer-line">
+      <span aria-hidden="true"></span>
+      <p>IhsanCloud menyatukan data dan proses kerja <strong>tanpa memaksa lembaga mengubah semuanya dalam satu waktu.</strong></p>
+    </div>
+  </section>
+
+  <section id="solusi" class="section solutions-section">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">Solusi modular</div>
+          <h2 class="heading">Satu fondasi untuk berbagai lembaga.</h2>
+        </div>
+        <p class="lead">Aktifkan modul sesuai kebutuhan dan kesiapan. Mulai sederhana, lalu berkembang tanpa memindahkan data ke sistem baru.</p>
+      </div>
+      <div class="product-selector" data-product-selector>
+        <div class="product-tabs" role="tablist" aria-label="Pilih jenis lembaga">
+          {products.map((product, index) => (
+            <button
+              type="button"
+              id={`tab-${product.id}`}
+              role="tab"
+              aria-selected={index === 0 ? "true" : "false"}
+              aria-controls={`panel-${product.id}`}
+              tabindex={index === 0 ? 0 : -1}
+              data-tab={product.id}
+            >
+              {product.label}
+            </button>
+          ))}
+        </div>
+        {products.map((product, index) => (
+          <div
+            class="product-panel"
+            id={`panel-${product.id}`}
+            role="tabpanel"
+            aria-labelledby={`tab-${product.id}`}
+            hidden={index !== 0}
+            data-panel={product.id}
+          >
+            <div class="product-name">
+              <span>{String(index + 1).padStart(2, "0")}</span>
+              <h3>{product.name}</h3>
+              <p>{product.description}</p>
+            </div>
+            <ul>
+              {product.features.map((feature) => <li><Check size={15} /> {feature}</li>)}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section id="produk" class="section product-tour">
+    <div class="container tour-grid">
+      <div class="tour-copy">
+        <div class="eyebrow">Product tour</div>
+        <h2 class="heading">Mudah digunakan operator, mudah dipahami pimpinan.</h2>
+        <p class="lead">Setiap peran melihat informasi yang relevan. Operator tahu apa yang harus ditindaklanjuti. Pimpinan memperoleh ringkasan tanpa membuka banyak laporan.</p>
+        <div class="tour-switches" role="list">
+          <div role="listitem"><LayoutDashboard size={19} /><span><strong>Dashboard operasional</strong><small>Tugas, kehadiran, data belum lengkap</small></span></div>
+          <div role="listitem"><ChartColumn size={19} /><span><strong>Dashboard pimpinan</strong><small>Perkembangan, kondisi program, risiko</small></span></div>
+          <div role="listitem"><Users size={19} /><span><strong>Portal pengguna</strong><small>Guru, orang tua, santri, jamaah</small></span></div>
+        </div>
+      </div>
+      <ProductDashboard />
+    </div>
+  </section>
+
+  <section class="section free-section">
+    <div class="container free-grid">
+      <div class="free-main">
+        <div class="eyebrow">Akses teknologi untuk lembaga</div>
+        <h2 class="heading">Software gratis agar lembaga bertumbuh tanpa terhalang biaya lisensi.</h2>
+        <p class="lead">Fitur inti disediakan gratis karena teknologi yang tertata seharusnya dapat membantu lebih banyak lembaga meningkatkan mutu tata kelola dan pelayanan.</p>
+        <div class="license-note"><Check size={20} /><strong>Tidak ada biaya lisensi untuk fitur inti.</strong></div>
+      </div>
+      <aside class="cost-note">
+        <CloudCog size={27} />
+        <h3>Gratis bukan berarti tanpa biaya operasional.</h3>
+        <p>Server, penyimpanan, keamanan, pemeliharaan, dokumentasi, dukungan, dan pengembangan tetap perlu dijaga.</p>
+        <p class="fine">Migrasi data, implementasi, pelatihan khusus, integrasi, dukungan prioritas, dan pengembangan fitur khusus dapat menjadi layanan berbayar.</p>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section donor-section">
+    <div class="container donor-grid">
+      <div>
+        <div class="eyebrow donor-eyebrow">Sahabat IhsanCloud</div>
+        <h2 class="heading">Mari menjaga IhsanCloud tetap hidup dan bermanfaat.</h2>
+      </div>
+      <div>
+        <p class="donor-lead">Dukungan rutin membantu kami menjaga layanan tetap aktif, stabil, aman, dan terus berkembang—agar lembaga dapat fokus mendidik dan melayani.</p>
+        <div class="donor-actions">
+          <a class="button button-light" href="/donasi">Jadi Donatur Tetap <ArrowRight size={17} /></a>
+          <a class="button button-ghost-light" href="/keberlanjutan">Lihat Penggunaan Donasi</a>
+        </div>
+      </div>
+    </div>
+    <div class="container donation-uses">
+      <div><CloudCog size={20} /><span>Server & infrastruktur</span></div>
+      <div><Database size={20} /><span>Database & penyimpanan</span></div>
+      <div><ShieldCheck size={20} /><span>Backup & keamanan</span></div>
+      <div><BookOpenCheck size={20} /><span>Dokumentasi & pelatihan</span></div>
+      <div><HeartHandshake size={20} /><span>Pendampingan lembaga</span></div>
+      <div><CloudCog size={20} /><span>Pengembangan produk</span></div>
+    </div>
+  </section>
+
+  <section id="dampak" class="section impact-section">
+    <div class="container">
+      <div class="impact-intro">
+        <div class="eyebrow">Dampak yang meluas</div>
+        <h2 class="heading">Donasi Anda tidak berhenti pada biaya server.</h2>
+        <p class="lead">Satu dukungan dapat membantu banyak lembaga, banyak pengajar, dan ribuan keluarga—tanpa mengada-adakan angka dampak sebelum datanya tersedia.</p>
+      </div>
+      <div class="impact-flow" aria-label="Alur dampak dukungan">
+        <article><span>01</span><h3>Dukungan operasional</h3><p>Individu, keluarga, lembaga, dan perusahaan menjaga keberlanjutan layanan.</p></article>
+        <ArrowRight class="flow-arrow" size={26} aria-hidden="true" />
+        <article><span>02</span><h3>Teknologi yang terjaga</h3><p>Infrastruktur, pemeliharaan, pengembangan, dan pendampingan terus berjalan.</p></article>
+        <ArrowRight class="flow-arrow" size={26} aria-hidden="true" />
+        <article><span>03</span><h3>Pelayanan yang membaik</h3><p>Pengelola, pengajar, peserta didik, orang tua, jamaah, dan masyarakat merasakan manfaat.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section support-section">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">Bentuk dukungan</div>
+          <h2 class="heading">Banyak jalan untuk ikut menjaga manfaat.</h2>
+        </div>
+        <p class="lead">Dukungan dapat berupa donasi rutin, sponsor lembaga, infrastruktur, keahlian, pelatihan, maupun pendampingan di berbagai daerah.</p>
+      </div>
+      <div class="support-grid">
+        <article class="support-featured">
+          <HeartHandshake size={28} />
+          <div><span>Donatur tetap</span><h3>Mulai dari Rp25.000 per bulan</h3><p>Dukungan rutin untuk operasional, pemeliharaan, dan pengembangan IhsanCloud.</p></div>
+          <a href="/donasi">Pilih dukungan <ArrowRight size={16} /></a>
+        </article>
+        <article><Landmark size={22} /><h3>Sponsor satu lembaga</h3><p>Bantu aktivasi, pelatihan, dan pendampingan lembaga.</p></article>
+        <article><CloudCog size={22} /><h3>Mitra infrastruktur</h3><p>Dukung server, database, monitoring, dan backup.</p></article>
+        <article><ClipboardCheck size={22} /><h3>Mitra implementasi</h3><p>Dampingi konfigurasi dan penggunaan di berbagai daerah.</p></article>
+        <article><GraduationCap size={22} /><h3>Mitra pelatihan</h3><p>Perkuat operator, guru, pengurus, dan tenaga kependidikan.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section transparency-section">
+    <div class="container transparency-grid">
+      <div>
+        <div class="eyebrow">Transparansi</div>
+        <h2 class="heading">Dikelola secara terbuka dan bertanggung jawab.</h2>
+        <p class="lead">Laporan berkala akan membantu donatur dan mitra memahami bagaimana dukungan digunakan dan manfaat apa yang telah dihasilkan.</p>
+        <a class="button button-secondary" href="/keberlanjutan">Lihat Laporan Keberlanjutan</a>
+      </div>
+      <div class="report-preview">
+        <div class="report-top"><span>Laporan keberlanjutan</span><b>Format laporan</b></div>
+        <div class="report-row"><span>Operasional infrastruktur</span><i></i></div>
+        <div class="report-row"><span>Pemeliharaan & keamanan</span><i></i></div>
+        <div class="report-row"><span>Pengembangan produk</span><i></i></div>
+        <div class="report-row"><span>Pelatihan & pendampingan</span><i></i></div>
+        <p>Data akan dipublikasikan setelah program berjalan dan diverifikasi. Tidak ada angka simulasi yang ditampilkan sebagai fakta.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section onboarding-section">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">Cara memulai</div>
+          <h2 class="heading">Bertahap, sesuai kesiapan lembaga.</h2>
+        </div>
+        <p class="lead">Mulai dari modul paling penting. Tim dapat menambah kebutuhan lain setelah alur kerja utama sudah stabil.</p>
+      </div>
+      <div class="steps">
+        {onboarding.map(([number, title, text]) => (
+          <article><span>{number}</span><div><h3>{title}</h3><p>{text}</p></div></article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section model-section">
+    <div class="container">
+      <div class="eyebrow">Model layanan</div>
+      <h2 class="heading">Pilih cara memulai yang paling masuk akal.</h2>
+      <div class="model-grid">
+        {serviceModels.map((model, index) => (
+          <article class:list={{ recommended: index === 0 }}>
+            <span>{index === 0 ? "Fitur inti gratis" : `0${index + 1}`}</span>
+            <h3>{model.name}</h3>
+            <p>{model.description}</p>
+            <ul>{model.items.map((item) => <li><Check size={14} /> {item}</li>)}</ul>
+            <a href={model.href}>{model.cta} <ArrowRight size={15} /></a>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section benefit-section">
+    <div class="container">
+      <div class="benefit-top">
+        <div>
+          <div class="eyebrow">Manfaat nyata</div>
+          <h2 class="heading">Lebih banyak ruang untuk mendidik dan melayani.</h2>
+        </div>
+        <p class="lead">Administrasi yang lebih tertib bukan tujuan akhir. Ia memberi waktu, perhatian, dan informasi yang lebih baik bagi seluruh penerima manfaat.</p>
+      </div>
+      <div class="benefit-list">
+        <article><School size={22} /><span>Lembaga</span><h3>Tata kelola lebih tertib, data terpusat, keputusan lebih terinformasi.</h3></article>
+        <article><BookOpenCheck size={22} /><span>Pengajar</span><h3>Pencatatan lebih mudah, komunikasi lebih terstruktur, fokus mengajar bertambah.</h3></article>
+        <article><GraduationCap size={22} /><span>Peserta didik</span><h3>Perkembangan lebih terpantau dan pelayanan lebih personal.</h3></article>
+        <article><MessageSquareText size={22} /><span>Orang tua & jamaah</span><h3>Informasi lebih mudah diperoleh dan tidak lagi tercecer.</h3></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section roadmap-section">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">Roadmap transparan</div>
+          <h2 class="heading">Dibangun bertahap bersama lembaga pengguna.</h2>
+        </div>
+        <p class="lead">Status fitur ditampilkan apa adanya. Daftar dapat berubah mengikuti validasi kebutuhan dan kapasitas pengembangan.</p>
+      </div>
+      <div class="roadmap-grid">
+        {roadmap.map((column) => (
+          <article>
+            <div class:list={["status", column.tone]}><span></span>{column.status}</div>
+            <ul>{column.items.map((item) => <li>{item}</li>)}</ul>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section id="faq" class="section faq-section">
+    <div class="container faq-grid">
+      <div>
+        <div class="eyebrow">Pertanyaan umum</div>
+        <h2 class="heading">Hal yang perlu Anda ketahui.</h2>
+        <p class="lead">Belum menemukan jawaban? Sampaikan kebutuhan lembaga Anda melalui formulir pendaftaran.</p>
+        <a class="button button-secondary" href="/daftar">Ajukan Pertanyaan</a>
+      </div>
+      <div class="faq-list">
+        {faqs.map((faq, index) => (
+          <details open={index === 0}>
+            <summary>{faq.q}<ChevronDown size={18} /></summary>
+            <p>{faq.a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="final-cta">
+    <div class="container final-grid">
+      <div>
+        <span class="final-kicker">Dua jalan, satu tujuan</span>
+        <h2>Mari membangun layanan digital yang terus hidup dan memberi manfaat.</h2>
+      </div>
+      <div>
+        <p>Daftarkan lembaga Anda atau jadilah donatur tetap agar semakin banyak lembaga memperoleh akses terhadap teknologi yang baik.</p>
+        <div class="hero-actions">
+          <a class="button button-light" href="/daftar">Daftarkan Lembaga <ArrowRight size={17} /></a>
+          <a class="button button-ghost-light" href="/donasi">Jadi Donatur Tetap</a>
+        </div>
+        <small>Teknologinya gratis. Keberlanjutannya kita jaga bersama.</small>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    document.querySelectorAll<HTMLElement>("[data-product-selector]").forEach((selector) => {
+      const tabs = Array.from(selector.querySelectorAll<HTMLButtonElement>("[data-tab]"));
+      const panels = Array.from(selector.querySelectorAll<HTMLElement>("[data-panel]"));
+
+      const selectTab = (tab: HTMLButtonElement) => {
+        tabs.forEach((item) => {
+          const selected = item === tab;
+          item.setAttribute("aria-selected", String(selected));
+          item.tabIndex = selected ? 0 : -1;
+        });
+        panels.forEach((panel) => {
+          panel.hidden = panel.dataset.panel !== tab.dataset.tab;
+        });
+      };
+
+      tabs.forEach((tab, index) => {
+        tab.addEventListener("click", () => selectTab(tab));
+        tab.addEventListener("keydown", (event) => {
+          if (!["ArrowLeft", "ArrowRight", "Home", "End"].includes(event.key)) return;
+          event.preventDefault();
+          let next = index;
+          if (event.key === "ArrowRight") next = (index + 1) % tabs.length;
+          if (event.key === "ArrowLeft") next = (index - 1 + tabs.length) % tabs.length;
+          if (event.key === "Home") next = 0;
+          if (event.key === "End") next = tabs.length - 1;
+          selectTab(tabs[next]);
+          tabs[next].focus();
+        });
+      });
+    });
+  </script>
+</BaseLayout>
+
+<style>
+  .hero {
+    overflow: hidden;
+    padding-block: clamp(4.5rem, 7.5vw, 7.8rem) clamp(5rem, 8vw, 8.5rem);
+    background: linear-gradient(115deg, rgba(233, 225, 210, 0.52), transparent 48%);
+  }
+
+  .hero-grid {
+    display: grid;
+    align-items: center;
+    gap: 4rem;
+  }
+
+  .hero-copy {
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-lead {
+    max-width: 62ch;
+    margin: 1.7rem 0 0;
+    color: #4f5a53;
+    font-size: clamp(1.05rem, 1.6vw, 1.22rem);
+    line-height: 1.75;
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.72rem;
+    margin-top: 2rem;
+  }
+
+  .microcopy {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 1.1rem 0 0;
+    color: #6a746e;
+    font-size: 0.8rem;
+  }
+
+  .visual-note {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin: 0 0 0.85rem 1rem;
+    color: #68746c;
+    font-size: 0.73rem;
+    font-weight: 700;
+  }
+
+  .visual-note span {
+    color: var(--gold);
+    font-family: "Manrope Variable", sans-serif;
+  }
+
+  .value-section {
+    background: #fffdf8;
+  }
+
+  .value-intro,
+  .section-head,
+  .benefit-top {
+    display: grid;
+    gap: 2rem;
+  }
+
+  .value-intro .lead,
+  .section-head .lead,
+  .benefit-top .lead {
+    margin: 0;
+  }
+
+  .principles {
+    display: grid;
+    margin-top: 4rem;
+    border-top: 1px solid var(--line);
+  }
+
+  .principles article {
+    display: grid;
+    grid-template-columns: 2.5rem 1fr;
+    column-gap: 1rem;
+    border-bottom: 1px solid var(--line);
+    padding: 1.4rem 0;
+  }
+
+  .principles span {
+    grid-row: 1 / 3;
+    color: var(--gold);
+    font-size: 0.72rem;
+    font-weight: 800;
+  }
+
+  .principles h3,
+  .principles p {
+    margin: 0;
+  }
+
+  .principles h3 {
+    color: var(--olive);
+    font-family: "Manrope Variable", sans-serif;
+    font-size: 1.05rem;
+  }
+
+  .principles p {
+    color: var(--muted);
+    font-size: 0.88rem;
+  }
+
+  .problem-section {
+    background: var(--sand);
+  }
+
+  .problem-grid {
+    display: grid;
+    gap: 4rem;
+  }
+
+  .problem-copy .lead {
+    margin-top: 1.7rem;
+  }
+
+  .problem-list {
+    border-top: 1px solid rgba(38, 55, 45, 0.23);
+  }
+
+  .problem-list div {
+    display: grid;
+    grid-template-columns: 2.4rem 1fr;
+    align-items: center;
+    border-bottom: 1px solid rgba(38, 55, 45, 0.23);
+    padding: 1rem 0;
+  }
+
+  .problem-list span {
+    color: #8d7a50;
+    font-size: 0.7rem;
+    font-weight: 800;
+  }
+
+  .problem-list p {
+    margin: 0;
+    color: var(--olive);
+    font-family: "Manrope Variable", sans-serif;
+    font-size: clamp(1rem, 1.6vw, 1.25rem);
+    font-weight: 650;
+  }
+
+  .answer-line {
+    display: grid;
+    grid-template-columns: minmax(3rem, 0.35fr) 1fr;
+    align-items: center;
+    gap: 1.5rem;
+    margin-top: 4rem;
+  }
+
+  .answer-line > span {
+    height: 1px;
+    background: var(--gold);
+  }
+
+  .answer-line p {
+    max-width: 53rem;
+    margin: 0;
+    color: var(--forest);
+    font-size: clamp(1.15rem, 2vw, 1.65rem);
+  }
+
+  .solutions-section {
+    background: #fffdf8;
+  }
+
+  .product-selector {
+    margin-top: 3.5rem;
+    border: 1px solid var(--line);
+    border-radius: 1rem;
+    background: var(--ivory);
+    padding: 0.45rem;
+  }
+
+  .product-tabs {
+    display: flex;
+    overflow-x: auto;
+    gap: 0.2rem;
+    scrollbar-width: none;
+  }
+
+  .product-tabs button {
+    flex: 1 0 auto;
+    border: 0;
+    border-radius: 0.55rem;
+    background: transparent;
+    color: #68736c;
+    padding: 0.8rem 1rem;
+    cursor: pointer;
+    font-size: 0.82rem;
+    font-weight: 750;
+  }
+
+  .product-tabs button[aria-selected="true"] {
+    background: var(--olive);
+    color: var(--ivory);
+  }
+
+  .product-panel {
+    display: grid;
+    gap: 2rem;
+    padding: clamp(1.5rem, 4vw, 3.5rem);
+  }
+
+  .product-panel[hidden] {
+    display: none;
+  }
+
+  .product-name > span {
+    color: var(--gold);
+    font-size: 0.72rem;
+    font-weight: 800;
+  }
+
+  .product-name h3 {
+    margin: 0.35rem 0;
+    color: var(--olive);
+    font-family: "Manrope Variable", sans-serif;
+    font-size: clamp(1.8rem, 3vw, 3rem);
+  }
+
+  .product-name p {
+    margin: 0;
+    color: var(--muted);
+  }
+
+  .product-panel ul {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.65rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .product-panel li {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 0.55rem;
+    color: #3f4d44;
+    font-size: 0.82rem;
+  }
+
+  .product-panel li :global(svg) {
+    flex: 0 0 auto;
+    color: var(--forest);
+  }
+
+  .product-tour {
+    background: #e9eee9;
+  }
+
+  .tour-grid {
+    display: grid;
+    align-items: center;
+    gap: 4rem;
+  }
+
+  .tour-copy .lead {
+    margin-top: 1.5rem;
+  }
+
+  .tour-switches {
+    display: grid;
+    gap: 0.7rem;
+    margin-top: 2rem;
+  }
+
+  .tour-switches > div {
+    display: flex;
+    gap: 0.9rem;
+    border-top: 1px solid rgba(38, 55, 45, 0.16);
+    padding-top: 0.85rem;
+    color: var(--forest);
+  }
+
+  .tour-switches span {
+    display: grid;
+  }
+
+  .tour-switches strong {
+    color: var(--olive);
+    font-size: 0.9rem;
+  }
+
+  .tour-switches small {
+    color: var(--muted);
+    font-size: 0.78rem;
+  }
+
+  .free-section {
+    background: var(--ivory);
+  }
+
+  .free-grid {
+    display: grid;
+    gap: 3rem;
+  }
+
+  .free-main .lead {
+    margin-top: 1.5rem;
+  }
+
+  .license-note {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
+    margin-top: 1.3rem;
+    color: var(--forest);
+  }
+
+  .cost-note {
+    align-self: end;
+    border-top: 3px solid var(--gold);
+    background: var(--olive);
+    color: var(--ivory);
+    padding: clamp(1.5rem, 4vw, 2.7rem);
+  }
+
+  .cost-note h3 {
+    margin: 1.2rem 0 0.8rem;
+    font-family: "Manrope Variable", sans-serif;
+    font-size: clamp(1.4rem, 2.4vw, 2rem);
+    line-height: 1.16;
+  }
+
+  .cost-note p {
+    color: rgba(247, 244, 236, 0.76);
+  }
+
+  .cost-note .fine {
+    margin: 1.4rem 0 0;
+    border-top: 1px solid rgba(247, 244, 236, 0.18);
+    padding-top: 1rem;
+    font-size: 0.75rem;
+  }
+
+  .donor-section {
+    background: var(--olive);
+    color: var(--ivory);
+  }
+
+  .donor-grid {
+    display: grid;
+    gap: 2.5rem;
+  }
+
+  .donor-section .heading {
+    color: var(--ivory);
+  }
+
+  .donor-eyebrow {
+    color: #d9c58e;
+  }
+
+  .donor-lead {
+    margin: 0;
+    color: rgba(247, 244, 236, 0.74);
+    font-size: clamp(1.05rem, 1.8vw, 1.3rem);
+  }
+
+  .donor-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.65rem;
+    margin-top: 1.7rem;
+  }
+
+  .donation-uses {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px;
+    margin-top: 4rem;
+    border: 1px solid rgba(247, 244, 236, 0.14);
+    background: rgba(247, 244, 236, 0.14);
+  }
+
+  .donation-uses div {
+    display: flex;
+    min-height: 92px;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 0.75rem;
+    background: var(--olive);
+    padding: 1rem;
+    color: rgba(247, 244, 236, 0.72);
+    font-size: 0.8rem;
+  }
+
+  .donation-uses :global(svg) {
+    color: #d6bd79;
+  }
+
+  .impact-section {
+    background: #fffdf8;
+  }
+
+  .impact-intro {
+    max-width: 52rem;
+  }
+
+  .impact-intro .lead {
+    margin-top: 1.5rem;
+  }
+
+  .impact-flow {
+    display: grid;
+    gap: 1rem;
+    margin-top: 4rem;
+  }
+
+  .impact-flow article {
+    border-top: 1px solid var(--line);
+    padding-top: 1.4rem;
+  }
+
+  .impact-flow article > span {
+    color: var(--gold);
+    font-size: 0.7rem;
+    font-weight: 800;
+  }
+
+  .impact-flow h3,
+  .impact-flow p {
+    margin: 0;
+  }
+
+  .impact-flow h3 {
+    margin-top: 0.55rem;
+    color: var(--olive);
+    font-family: "Manrope Variable", sans-serif;
+    font-size: 1.25rem;
+  }
+
+  .impact-flow p {
+    margin-top: 0.5rem;
+    color: var(--muted);
+    font-size: 0.9rem;
+  }
+
+  .flow-arrow {
+    align-self: center;
+    color: var(--gold);
+    transform: rotate(90deg);
+  }
+
+  .support-section {
+    background: var(--sand);
+  }
+
+  .support-grid {
+    display: grid;
+    gap: 0.8rem;
+    margin-top: 3.5rem;
+  }
+
+  .support-grid article {
+    border: 1px solid rgba(38, 55, 45, 0.18);
+    background: rgba(255, 253, 248, 0.56);
+    padding: 1.4rem;
+  }
+
+  .support-grid h3 {
+    margin: 1.1rem 0 0.4rem;
+    color: var(--olive);
+    font-family: "Manrope Variable", sans-serif;
+    font-size: 1.08rem;
+  }
+
+  .support-grid p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.86rem;
+  }
+
+  .support-featured {
+    display: grid;
+    align-items: start;
+    gap: 1.2rem;
+    background: var(--olive) !important;
+    color: var(--ivory);
+  }
+
+  .support-featured span {
+    color: #d5bc78;
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .support-featured h3 {
+    color: var(--ivory);
+    font-size: 1.5rem;
+  }
+
+  .support-featured p {
+    color: rgba(247, 244, 236, 0.72);
+  }
+
+  .support-featured a {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    color: #e2c981;
+    font-size: 0.8rem;
+    font-weight: 800;
+  }
+
+  .transparency-section {
+    background: #fffdf8;
+  }
+
+  .transparency-grid {
+    display: grid;
+    align-items: center;
+    gap: 4rem;
+  }
+
+  .transparency-grid .lead {
+    margin: 1.5rem 0;
+  }
+
+  .report-preview {
+    border: 1px solid var(--line);
+    border-radius: 0.7rem;
+    background: var(--ivory);
+    padding: 1.25rem;
+    box-shadow: 18px 18px 0 var(--sand);
+  }
+
+  .report-top,
+  .report-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    border-bottom: 1px solid var(--line);
+    padding: 0.8rem 0;
+  }
+
+  .report-top {
+    padding-top: 0;
+    color: var(--olive);
+    font-family: "Manrope Variable", sans-serif;
+    font-weight: 800;
+  }
+
+  .report-top b {
+    border-radius: 999px;
+    background: var(--sand);
+    padding: 0.28rem 0.55rem;
+    color: #75613a;
+    font-size: 0.62rem;
+    text-transform: uppercase;
+  }
+
+  .report-row {
+    color: #526057;
+    font-size: 0.8rem;
+  }
+
+  .report-row i {
+    width: 24%;
+    height: 0.48rem;
+    border-radius: 999px;
+    background: #d9e1d9;
+  }
+
+  .report-preview > p {
+    margin: 1rem 0 0;
+    color: var(--muted);
+    font-size: 0.72rem;
+  }
+
+  .onboarding-section {
+    background: #e9eee9;
+  }
+
+  .steps {
+    display: grid;
+    gap: 0;
+    margin-top: 3rem;
+    border-top: 1px solid var(--line);
+  }
+
+  .steps article {
+    display: grid;
+    grid-template-columns: 3rem 1fr;
+    gap: 1rem;
+    border-bottom: 1px solid var(--line);
+    padding: 1.2rem 0;
+  }
+
+  .steps article > span {
+    color: var(--gold);
+    font-size: 0.7rem;
+    font-weight: 800;
+  }
+
+  .steps h3,
+  .steps p {
+    margin: 0;
+  }
+
+  .steps h3 {
+    color: var(--olive);
+    font-family: "Manrope Variable", sans-serif;
+    font-size: 1.05rem;
+  }
+
+  .steps p {
+    color: var(--muted);
+    font-size: 0.82rem;
+  }
+
+  .model-section {
+    background: var(--ivory);
+  }
+
+  .model-grid {
+    display: grid;
+    gap: 0.8rem;
+    margin-top: 3rem;
+  }
+
+  .model-grid article {
+    border: 1px solid var(--line);
+    background: #fffdf8;
+    padding: 1.5rem;
+  }
+
+  .model-grid article.recommended {
+    border-top: 4px solid var(--gold);
+  }
+
+  .model-grid article > span {
+    color: #8b7445;
+    font-size: 0.66rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .model-grid h3 {
+    margin: 1.2rem 0 0.45rem;
+    color: var(--olive);
+    font-family: "Manrope Variable", sans-serif;
+    font-size: 1.6rem;
+  }
+
+  .model-grid p {
+    min-height: 3rem;
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.86rem;
+  }
+
+  .model-grid ul {
+    display: grid;
+    gap: 0.55rem;
+    margin: 1.5rem 0;
+    padding: 1.2rem 0;
+    border-block: 1px solid var(--line);
+    list-style: none;
+  }
+
+  .model-grid li {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    color: #4e5a52;
+    font-size: 0.8rem;
+  }
+
+  .model-grid a {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    color: var(--forest);
+    font-size: 0.8rem;
+    font-weight: 800;
+  }
+
+  .benefit-section {
+    background: var(--olive);
+    color: var(--ivory);
+  }
+
+  .benefit-section .heading {
+    color: var(--ivory);
+  }
+
+  .benefit-section .lead {
+    color: rgba(247, 244, 236, 0.7);
+  }
+
+  .benefit-list {
+    display: grid;
+    margin-top: 4rem;
+    border-top: 1px solid rgba(247, 244, 236, 0.18);
+  }
+
+  .benefit-list article {
+    display: grid;
+    grid-template-columns: 2rem 1fr;
+    gap: 0 1rem;
+    border-bottom: 1px solid rgba(247, 244, 236, 0.18);
+    padding: 1.4rem 0;
+  }
+
+  .benefit-list :global(svg) {
+    grid-row: 1 / 3;
+    color: #d4bb76;
+  }
+
+  .benefit-list span {
+    color: #d4bb76;
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .benefit-list h3 {
+    margin: 0.4rem 0 0;
+    max-width: 42rem;
+    color: var(--ivory);
+    font-family: "Manrope Variable", sans-serif;
+    font-size: clamp(1.1rem, 2vw, 1.55rem);
+    font-weight: 550;
+  }
+
+  .roadmap-section {
+    background: #fffdf8;
+  }
+
+  .roadmap-grid {
+    display: grid;
+    gap: 0.8rem;
+    margin-top: 3rem;
+  }
+
+  .roadmap-grid article {
+    border: 1px solid var(--line);
+    padding: 1.4rem;
+  }
+
+  .status {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 1rem;
+    color: var(--olive);
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+  }
+
+  .status span {
+    width: 0.55rem;
+    height: 0.55rem;
+    border-radius: 50%;
+  }
+
+  .available span { background: #47785b; }
+  .development span { background: var(--gold); }
+  .planned span { background: #9aa19c; }
+
+  .roadmap-grid ul {
+    display: grid;
+    gap: 0.65rem;
+    margin: 1.2rem 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .roadmap-grid li {
+    color: #536058;
+    font-size: 0.84rem;
+  }
+
+  .roadmap-grid li::before {
+    margin-right: 0.55rem;
+    color: var(--gold);
+    content: "—";
+  }
+
+  .faq-section {
+    background: var(--ivory);
+  }
+
+  .faq-grid {
+    display: grid;
+    gap: 4rem;
+  }
+
+  .faq-grid .lead {
+    margin: 1.5rem 0;
+  }
+
+  .faq-list {
+    border-top: 1px solid var(--line);
+  }
+
+  details {
+    border-bottom: 1px solid var(--line);
+  }
+
+  summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1.15rem 0;
+    cursor: pointer;
+    color: var(--olive);
+    font-family: "Manrope Variable", sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    list-style: none;
+  }
+
+  summary::-webkit-details-marker {
+    display: none;
+  }
+
+  summary :global(svg) {
+    flex: 0 0 auto;
+    transition: transform 180ms ease;
+  }
+
+  details[open] summary :global(svg) {
+    transform: rotate(180deg);
+  }
+
+  details p {
+    margin: -0.3rem 0 1.2rem;
+    padding-right: 2rem;
+    color: var(--muted);
+    font-size: 0.86rem;
+  }
+
+  .final-cta {
+    background: var(--forest);
+    color: var(--ivory);
+    padding-block: clamp(4rem, 8vw, 7rem);
+  }
+
+  .final-grid {
+    display: grid;
+    gap: 2.5rem;
+  }
+
+  .final-kicker {
+    color: #d7c184;
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .final-cta h2 {
+    margin: 1rem 0 0;
+    max-width: 18ch;
+    font-family: "Manrope Variable", sans-serif;
+    font-size: clamp(2.2rem, 5vw, 4.5rem);
+    line-height: 1.03;
+    letter-spacing: -0.045em;
+  }
+
+  .final-cta p {
+    margin: 0;
+    color: rgba(247, 244, 236, 0.72);
+    font-size: 1.05rem;
+  }
+
+  .final-cta small {
+    display: block;
+    margin-top: 1rem;
+    color: rgba(247, 244, 236, 0.58);
+  }
+
+  @media (min-width: 720px) {
+    .value-intro,
+    .section-head,
+    .benefit-top,
+    .donor-grid,
+    .final-grid {
+      grid-template-columns: 1.15fr 0.85fr;
+      align-items: end;
+      gap: 4rem;
+    }
+
+    .principles {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .principles article {
+      grid-template-columns: 1fr;
+      border-right: 1px solid var(--line);
+      padding: 1.5rem;
+    }
+
+    .principles article:first-child {
+      padding-left: 0;
+    }
+
+    .principles article:last-child {
+      border-right: 0;
+    }
+
+    .principles span {
+      grid-row: auto;
+    }
+
+    .principles h3 {
+      margin-top: 2.2rem;
+    }
+
+    .product-panel {
+      grid-template-columns: 0.9fr 1.1fr;
+      align-items: center;
+    }
+
+    .donation-uses {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .impact-flow {
+      grid-template-columns: 1fr auto 1fr auto 1fr;
+    }
+
+    .flow-arrow {
+      transform: none;
+    }
+
+    .support-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .support-featured {
+      grid-column: 1 / -1;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+    }
+
+    .steps {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .steps article:nth-child(odd) {
+      border-right: 1px solid var(--line);
+      padding-right: 2rem;
+    }
+
+    .steps article:nth-child(even) {
+      padding-left: 2rem;
+    }
+
+    .model-grid,
+    .roadmap-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  @media (min-width: 980px) {
+    .hero-grid {
+      grid-template-columns: minmax(0, 0.88fr) minmax(520px, 1.12fr);
+      gap: 2rem;
+    }
+
+    .hero-visual {
+      margin-right: -12%;
+    }
+
+    .problem-grid,
+    .tour-grid,
+    .free-grid,
+    .transparency-grid,
+    .faq-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: clamp(4rem, 8vw, 8rem);
+    }
+
+    .support-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .support-featured {
+      grid-column: 1 / span 2;
+      grid-row: 1 / span 2;
+      grid-template-columns: 1fr;
+      align-content: space-between;
+      padding: 2rem;
+    }
+
+    .support-featured h3 {
+      font-size: 2rem;
+    }
+
+    .benefit-list article {
+      grid-template-columns: 3rem 9rem 1fr;
+      align-items: start;
+      padding: 1.6rem 0;
+    }
+
+    .benefit-list :global(svg) {
+      grid-row: auto;
+    }
+
+    .benefit-list h3 {
+      margin: 0;
+    }
+  }
+</style>

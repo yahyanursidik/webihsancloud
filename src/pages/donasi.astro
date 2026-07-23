@@ -1,0 +1,293 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import InnerPageHero from "../components/InnerPageHero.astro";
+import FormHandler from "../components/FormHandler.astro";
+import { Check, HeartHandshake, ShieldCheck } from "@lucide/astro";
+
+const turnstileKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY;
+const amounts = ["25000", "50000", "100000", "250000"];
+---
+
+<BaseLayout
+  title="Jadi Donatur Tetap — IhsanCloud"
+  description="Jadilah Sahabat IhsanCloud dan bantu menjaga layanan digital pendidikan dan dakwah tetap hidup, aman, serta terus berkembang."
+>
+  <InnerPageHero
+    eyebrow="Sahabat IhsanCloud"
+    title="Satu dukungan, manfaat yang terus berjalan."
+    description="Donasi rutin membantu membiayai infrastruktur, pemeliharaan, keamanan, pengembangan produk, dokumentasi, pelatihan, dan pendampingan lembaga."
+  />
+  <section class="section donation-page">
+    <div class="container donation-grid">
+      <aside>
+        <HeartHandshake size={30} />
+        <h2>Teknologinya gratis. Keberlanjutannya dijaga bersama.</h2>
+        <ul>
+          <li><Check size={16} />Donasi tidak wajib bagi lembaga pengguna.</li>
+          <li><Check size={16} />Laporan penggunaan disampaikan berkala.</li>
+          <li><Check size={16} />Dukungan dapat dihentikan kapan saja.</li>
+        </ul>
+        <div class="privacy-note"><ShieldCheck size={19} /><p>Data donatur hanya digunakan untuk administrasi dukungan dan penyampaian laporan sesuai persetujuan.</p></div>
+      </aside>
+      <div class="form-card">
+        <div class="form-heading">
+          <span>Minat donasi rutin</span>
+          <h2>Pilih bentuk dukungan</h2>
+          <p>Tim akan mengirimkan petunjuk pembayaran setelah data diterima.</p>
+        </div>
+        <form class="form-grid two" action="/api/donor" method="post" data-async-form>
+          <div class="field">
+            <label for="name">Nama *</label>
+            <input id="name" name="name" autocomplete="name" required />
+          </div>
+          <div class="field">
+            <label for="email">Email *</label>
+            <input id="email" name="email" type="email" autocomplete="email" required />
+          </div>
+          <div class="field">
+            <label for="whatsapp">WhatsApp (opsional)</label>
+            <input id="whatsapp" name="whatsapp" type="tel" autocomplete="tel" />
+          </div>
+          <div class="field">
+            <label for="donorType">Jenis donatur *</label>
+            <select id="donorType" name="donorType" required>
+              <option value="">Pilih jenis</option>
+              <option>Individu</option>
+              <option>Keluarga</option>
+              <option>Lembaga</option>
+              <option>Perusahaan</option>
+            </select>
+          </div>
+          <fieldset class="field full amount-field">
+            <legend>Nominal dukungan bulanan *</legend>
+            <div class="amount-options">
+              {amounts.map((amount, index) => (
+                <label>
+                  <input type="radio" name="amount" value={amount} required={index === 0} />
+                  <span>Rp{Number(amount).toLocaleString("id-ID")}</span>
+                </label>
+              ))}
+              <label>
+                <input type="radio" name="amount" value="lainnya" />
+                <span>Nominal lain</span>
+              </label>
+            </div>
+          </fieldset>
+          <div class="field">
+            <label for="frequency">Frekuensi *</label>
+            <select id="frequency" name="frequency" required>
+              <option value="bulanan">Bulanan</option>
+              <option value="sekali">Sekali</option>
+              <option value="tahunan">Tahunan</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="program">Program yang didukung *</label>
+            <select id="program" name="program" required>
+              <option>Operasional Umum</option>
+              <option>Infrastruktur Server</option>
+              <option>Pengembangan Produk</option>
+              <option>Pemeliharaan dan Keamanan</option>
+              <option>Pelatihan Lembaga</option>
+              <option>Sponsor Satu Lembaga</option>
+              <option>Pengembangan Mitra</option>
+            </select>
+          </div>
+          <label class="checkbox full">
+            <input type="checkbox" name="anonymous" value="true" />
+            <span>Tampilkan dukungan saya sebagai anonim.</span>
+          </label>
+          <label class="checkbox full">
+            <input type="checkbox" name="receiveReports" value="true" />
+            <span>Saya ingin menerima laporan penggunaan dukungan dan perkembangan IhsanCloud.</span>
+          </label>
+          <label class="checkbox full">
+            <input type="checkbox" name="privacyAccepted" value="true" required />
+            <span>Saya menyetujui <a href="/privasi">kebijakan privasi</a>. *</span>
+          </label>
+          <div class="field honey" aria-hidden="true">
+            <label for="website">Website</label>
+            <input id="website" name="website" tabindex="-1" autocomplete="off" />
+          </div>
+          {turnstileKey && <div class="cf-turnstile full" data-sitekey={turnstileKey}></div>}
+          <div class="form-status full" data-form-status tabindex="-1" role="status" aria-live="polite"></div>
+          <div class="full form-submit">
+            <button class="button button-primary" type="submit">Mulai Menjadi Donatur Tetap</button>
+            <small>Pengisian formulir belum memotong dana secara otomatis.</small>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+  {turnstileKey && <script is:inline src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>}
+  <FormHandler />
+</BaseLayout>
+
+<style>
+  .donation-page {
+    background: #fffdf8;
+  }
+
+  .donation-grid {
+    display: grid;
+    gap: 3rem;
+  }
+
+  aside {
+    align-self: start;
+    border-top: 3px solid var(--gold);
+    background: var(--olive);
+    color: var(--ivory);
+    padding: clamp(1.5rem, 4vw, 2.5rem);
+  }
+
+  aside h2 {
+    margin: 1.2rem 0;
+    font-family: "Manrope Variable", sans-serif;
+    font-size: clamp(1.6rem, 3vw, 2.5rem);
+    line-height: 1.12;
+  }
+
+  aside ul {
+    display: grid;
+    gap: 0.75rem;
+    margin: 0;
+    padding: 1.4rem 0;
+    border-block: 1px solid rgba(247, 244, 236, 0.17);
+    list-style: none;
+  }
+
+  aside li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    color: rgba(247, 244, 236, 0.76);
+    font-size: 0.84rem;
+  }
+
+  aside li :global(svg) {
+    flex: 0 0 auto;
+    color: #d8c07d;
+  }
+
+  .privacy-note {
+    display: flex;
+    gap: 0.7rem;
+    margin-top: 1.3rem;
+    color: #d8c07d;
+  }
+
+  .privacy-note p {
+    margin: 0;
+    color: rgba(247, 244, 236, 0.62);
+    font-size: 0.74rem;
+  }
+
+  .form-card {
+    border: 1px solid var(--line);
+    background: var(--ivory);
+    padding: clamp(1.25rem, 4vw, 2.7rem);
+  }
+
+  .form-heading {
+    margin-bottom: 2rem;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 1.2rem;
+  }
+
+  .form-heading span {
+    color: #896f3c;
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .form-heading h2 {
+    margin: 0.4rem 0 0;
+    color: var(--olive);
+    font-family: "Manrope Variable", sans-serif;
+    font-size: 2rem;
+  }
+
+  .form-heading p {
+    margin: 0.3rem 0 0;
+    color: var(--muted);
+    font-size: 0.8rem;
+  }
+
+  .amount-field {
+    margin: 0;
+    padding: 0;
+    border: 0;
+  }
+
+  .amount-options {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+  }
+
+  .amount-options label {
+    cursor: pointer;
+  }
+
+  .amount-options input {
+    position: absolute;
+    opacity: 0;
+  }
+
+  .amount-options span {
+    display: grid;
+    min-height: 44px;
+    place-items: center;
+    border: 1px solid var(--line);
+    border-radius: 0.45rem;
+    background: #fffdf8;
+    font-size: 0.78rem;
+  }
+
+  .amount-options input:checked + span {
+    border-color: var(--forest);
+    background: var(--olive);
+    color: var(--ivory);
+  }
+
+  .amount-options input:focus-visible + span {
+    outline: 3px solid rgba(182, 154, 94, 0.8);
+    outline-offset: 2px;
+  }
+
+  .checkbox a {
+    text-decoration: underline;
+  }
+
+  .honey {
+    position: absolute;
+    left: -9999px;
+  }
+
+  .form-submit {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.6rem;
+  }
+
+  .form-submit small {
+    color: var(--muted);
+    font-size: 0.72rem;
+  }
+
+  @media (min-width: 900px) {
+    .donation-grid {
+      grid-template-columns: 0.72fr 1.28fr;
+      gap: clamp(3rem, 7vw, 7rem);
+    }
+
+    aside {
+      position: sticky;
+      top: 8rem;
+    }
+  }
+</style>

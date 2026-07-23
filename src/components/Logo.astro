@@ -1,0 +1,76 @@
+---
+const { light = false } = Astro.props;
+---
+
+<a class:list={["logo", { light }]} href="/" aria-label="IhsanCloud, halaman utama">
+  <span class="logo-mark" aria-hidden="true">
+    <span></span><span></span>
+  </span>
+  <span class="logo-copy">
+    <strong>IhsanCloud</strong>
+    <small>by Ihsanul Adab</small>
+  </span>
+</a>
+
+<style>
+  .logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.7rem;
+    color: var(--olive);
+  }
+
+  .logo-mark {
+    position: relative;
+    display: grid;
+    width: 2rem;
+    height: 2rem;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.22rem;
+    border-radius: 0.45rem;
+    background: var(--olive);
+    padding: 0.43rem;
+  }
+
+  .logo-mark::after {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0.34rem;
+    height: 0.34rem;
+    content: "";
+    transform: translate(-50%, -50%);
+    background: var(--gold);
+  }
+
+  .logo-mark span {
+    background: var(--ivory);
+  }
+
+  .logo-copy {
+    display: grid;
+    line-height: 1;
+  }
+
+  .logo-copy strong {
+    font-family: "Manrope Variable", "Manrope", sans-serif;
+    font-size: 1rem;
+    letter-spacing: -0.025em;
+  }
+
+  .logo-copy small {
+    margin-top: 0.27rem;
+    font-size: 0.58rem;
+    letter-spacing: 0.06em;
+    opacity: 0.66;
+  }
+
+  .light {
+    color: var(--ivory);
+  }
+
+  .light .logo-mark {
+    border: 1px solid rgba(247, 244, 236, 0.42);
+    background: rgba(247, 244, 236, 0.08);
+  }
+</style>

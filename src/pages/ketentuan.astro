@@ -1,0 +1,54 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import InnerPageHero from "../components/InnerPageHero.astro";
+---
+
+<BaseLayout
+  title="Ketentuan Penggunaan — IhsanCloud"
+  description="Ketentuan awal penggunaan situs dan layanan IhsanCloud."
+>
+  <InnerPageHero
+    eyebrow="Legal"
+    title="Ketentuan penggunaan."
+    description="Prinsip dasar penggunaan situs dan layanan IhsanCloud sebelum dokumen final diterbitkan."
+  />
+  <article class="container legal section">
+    <p class="notice"><strong>Catatan:</strong> Dokumen ini adalah draf operasional awal dan perlu ditinjau oleh penanggung jawab hukum sebelum peluncuran publik.</p>
+    <h2>Ruang lingkup</h2>
+    <p>Ketentuan ini mengatur penggunaan situs, formulir, materi, dan akses awal terhadap layanan IhsanCloud.</p>
+    <h2>Akses fitur inti</h2>
+    <p>Fitur inti dapat tersedia gratis bagi lembaga yang memenuhi ketentuan program. Ketersediaan modul mengikuti status produk, kapasitas layanan, dan hasil asesmen kebutuhan lembaga.</p>
+    <h2>Layanan tambahan</h2>
+    <p>Migrasi data, implementasi, pelatihan khusus, konfigurasi, integrasi, domain khusus, dukungan prioritas, dan pengembangan fitur khusus dapat dikenakan biaya berdasarkan kesepakatan terpisah.</p>
+    <h2>Tanggung jawab pengguna</h2>
+    <p>Pengguna bertanggung jawab menjaga kerahasiaan akun, memastikan data yang dimasukkan memiliki dasar yang sah, dan menggunakan layanan sesuai tujuan lembaga.</p>
+    <h2>Ketersediaan layanan</h2>
+    <p>Kami berupaya menjaga layanan secara wajar, tetapi tidak menjanjikan ketersediaan tanpa gangguan sebelum tersedia perjanjian layanan khusus.</p>
+    <h2>Perubahan</h2>
+    <p>Ketentuan dapat diperbarui mengikuti perkembangan produk, tata kelola, dan ketentuan hukum yang berlaku.</p>
+  </article>
+</BaseLayout>
+
+<style>
+  .legal {
+    max-width: 820px;
+  }
+
+  .legal h2 {
+    margin: 2.4rem 0 0.55rem;
+    color: var(--olive);
+    font-family: "Manrope Variable", sans-serif;
+    font-size: 1.45rem;
+  }
+
+  .legal p {
+    color: #536058;
+  }
+
+  .notice {
+    border-left: 3px solid var(--gold);
+    background: var(--sand);
+    padding: 1rem 1.2rem;
+    font-size: 0.86rem;
+  }
+</style>
