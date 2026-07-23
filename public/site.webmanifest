@@ -1,0 +1,17 @@
+{
+  "name": "IhsanCloud",
+  "short_name": "IhsanCloud",
+  "description": "Sistem informasi gratis untuk lembaga pendidikan dan dakwah.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F7F4EC",
+  "theme_color": "#26372D",
+  "icons": [
+    {
+      "src": "/brand/ihsancloud-mark.png",
+      "sizes": "1254x1254",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

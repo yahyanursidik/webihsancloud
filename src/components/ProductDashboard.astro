@@ -4,7 +4,10 @@ import { Bell, CalendarDays, CircleCheck, Ellipsis, TrendingUp, Users, WalletCar
 
 <div class="dashboard-frame" aria-label="Pratinjau dashboard IhsanCloud dengan data demonstrasi">
   <div class="dashboard-top">
-    <div class="dash-brand"><span aria-hidden="true"></span> IhsanCloud</div>
+    <div class="dash-brand">
+      <span aria-hidden="true"><img src="/brand/ihsancloud-mark.png" alt="" /></span>
+      IhsanCloud
+    </div>
     <div class="demo-label">Data demonstrasi</div>
     <div class="dash-avatar">AP</div>
   </div>
@@ -108,11 +111,22 @@ import { Bell, CalendarDays, CircleCheck, Ellipsis, TrendingUp, Users, WalletCar
   }
 
   .dash-brand span {
+    position: relative;
+    display: block;
+    overflow: hidden;
     width: 19px;
     height: 19px;
     border-radius: 5px;
-    background: var(--olive);
-    box-shadow: inset 6px 0 var(--ivory), inset -6px 0 var(--ivory);
+    background: white;
+  }
+
+  .dash-brand span img {
+    position: absolute;
+    top: -7px;
+    left: -5px;
+    width: 29px;
+    max-width: none;
+    height: auto;
   }
 
   .demo-label {

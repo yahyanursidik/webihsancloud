@@ -15,7 +15,7 @@ interface Props {
 const {
   title,
   description,
-  image = "/og.png",
+  image = "/og-v2.png",
   hideHeader = false,
 } = Astro.props;
 
@@ -37,8 +37,12 @@ const organizationJsonLd = {
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <meta name="theme-color" content="#26372D" />
+    <meta name="application-name" content="IhsanCloud" />
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/png" href="/brand/ihsancloud-mark.png" />
+    <link rel="apple-touch-icon" href="/brand/ihsancloud-mark.png" />
+    <link rel="manifest" href="/site.webmanifest" />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="id_ID" />
     <meta property="og:site_name" content="IhsanCloud" />

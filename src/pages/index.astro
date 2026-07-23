@@ -56,18 +56,18 @@ const onboarding = [
 ---
 
 <BaseLayout
-  title="IhsanCloud — Ekosistem Digital Pendidikan dan Dakwah"
-  description="IhsanCloud membantu sekolah, ma’had, TPQ, masjid, yayasan, dan lembaga dakwah mengelola data dan pelayanan dalam satu ekosistem berbasis cloud."
+  title="IhsanCloud — Sistem Informasi Gratis untuk Lembaga Pendidikan dan Dakwah"
+  description="Sistem informasi gratis berbasis cloud untuk ma’had, pesantren, TPQ, masjid, yayasan, dan lembaga dakwah yang terus dijaga, didampingi, dan dikembangkan."
 >
   <script is:inline type="application/ld+json" set:html={JSON.stringify(softwareJsonLd)} />
 
   <section class="hero">
     <div class="container hero-grid">
       <div class="hero-copy">
-        <div class="eyebrow">Ekosistem digital pendidikan dan dakwah</div>
-        <h1 class="display">Menata amanah. Meningkatkan mutu pelayanan.</h1>
+        <div class="eyebrow">Sistem informasi inti gratis • Berbasis cloud</div>
+        <h1 class="display hero-title">Sistem informasi gratis untuk Ma’had, Pesantren, TPQ, Masjid, Yayasan, dan Lembaga Dakwah.</h1>
         <p class="hero-lead">
-          IhsanCloud membantu sekolah, ma’had, TPQ, masjid, yayasan, dan lembaga dakwah mengelola data, pembelajaran, administrasi, SDM, jamaah, serta program dalam satu ekosistem berbasis cloud.
+          Dibangun untuk ma’had, pesantren, TPQ, rumah Qur’an, masjid, yayasan, dan lembaga dakwah lainnya—agar data, pembelajaran, administrasi, SDM, jamaah, serta program dapat dikelola dalam satu ekosistem.
         </p>
         <div class="hero-actions">
           <a class="button button-primary" href="/daftar">Daftarkan Lembaga <ArrowRight size={17} /></a>
@@ -79,6 +79,26 @@ const onboarding = [
         <div class="visual-note"><span>01</span> Ruang kerja lembaga yang mudah dipahami</div>
         <ProductDashboard />
       </div>
+    </div>
+  </section>
+
+  <section class="section commitment-section">
+    <div class="container commitment-grid">
+      <div class="commitment-heading">
+        <div class="eyebrow">Lebih dari sekadar membuat aplikasi</div>
+        <h2>Membuat sistem adalah awal. Menjaga manfaatnya adalah amanah jangka panjang.</h2>
+      </div>
+      <div class="commitment-copy">
+        <blockquote>
+          “Banyak orang sekarang bisa membuat aplikasi atau sistem informasi. Namun untuk menjaga, mendukung, mendampingi, melatih, dan terus mengembangkannya sesuai kebutuhan—tidak semua mampu.”
+        </blockquote>
+        <p>Karena itu IhsanCloud hadir bukan sebagai proyek sekali jadi, melainkan sebagai layanan yang tumbuh bersama kebutuhan lembaga.</p>
+      </div>
+    </div>
+    <div class="container commitment-steps" aria-label="Komitmen keberlanjutan IhsanCloud">
+      {["Menjaga", "Mendukung", "Mendampingi", "Melatih", "Mengembangkan"].map((item, index) => (
+        <div><span>{String(index + 1).padStart(2, "0")}</span><strong>{item}</strong></div>
+      ))}
     </div>
   </section>
 
@@ -444,6 +464,11 @@ const onboarding = [
     z-index: 2;
   }
 
+  .hero-title {
+    max-width: 13ch;
+    font-size: clamp(2.55rem, 5.45vw, 5.25rem);
+  }
+
   .hero-lead {
     max-width: 62ch;
     margin: 1.7rem 0 0;
@@ -481,6 +506,78 @@ const onboarding = [
   .visual-note span {
     color: var(--gold);
     font-family: "Manrope Variable", sans-serif;
+  }
+
+  .commitment-section {
+    background: var(--olive);
+    color: var(--ivory);
+  }
+
+  .commitment-grid {
+    display: grid;
+    gap: 2.5rem;
+  }
+
+  .commitment-section .eyebrow {
+    color: #ddc780;
+  }
+
+  .commitment-heading h2 {
+    max-width: 18ch;
+    margin: 0;
+    color: var(--ivory);
+    font-family: "Manrope Variable", sans-serif;
+    font-size: clamp(2.2rem, 5vw, 4.8rem);
+    font-weight: 700;
+    line-height: 1.02;
+    letter-spacing: -0.047em;
+  }
+
+  .commitment-copy blockquote {
+    margin: 0;
+    color: var(--ivory);
+    font-family: "Manrope Variable", sans-serif;
+    font-size: clamp(1.35rem, 2.5vw, 2.15rem);
+    font-weight: 520;
+    line-height: 1.42;
+    letter-spacing: -0.025em;
+  }
+
+  .commitment-copy > p {
+    max-width: 58ch;
+    margin: 1.5rem 0 0;
+    border-left: 2px solid var(--gold);
+    padding-left: 1rem;
+    color: rgba(247, 244, 236, 0.68);
+  }
+
+  .commitment-steps {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px;
+    margin-top: clamp(3rem, 6vw, 5rem);
+    border: 1px solid rgba(247, 244, 236, 0.15);
+    background: rgba(247, 244, 236, 0.15);
+  }
+
+  .commitment-steps div {
+    display: grid;
+    min-height: 96px;
+    align-content: space-between;
+    background: var(--olive);
+    padding: 1rem;
+  }
+
+  .commitment-steps span {
+    color: var(--gold);
+    font-size: 0.68rem;
+    font-weight: 800;
+  }
+
+  .commitment-steps strong {
+    color: var(--ivory);
+    font-family: "Manrope Variable", sans-serif;
+    font-size: 0.9rem;
   }
 
   .value-section {
@@ -1402,6 +1499,10 @@ const onboarding = [
     .roadmap-grid {
       grid-template-columns: repeat(3, 1fr);
     }
+
+    .commitment-steps {
+      grid-template-columns: repeat(5, 1fr);
+    }
   }
 
   @media (min-width: 980px) {
@@ -1412,6 +1513,12 @@ const onboarding = [
 
     .hero-visual {
       margin-right: -12%;
+    }
+
+    .commitment-grid {
+      grid-template-columns: 1fr 1fr;
+      align-items: start;
+      gap: clamp(4rem, 8vw, 8rem);
     }
 
     .problem-grid,

@@ -318,6 +318,12 @@ a {
   }
 }
 
+@media (max-width: 979px) {
+  body {
+    padding-bottom: calc(72px + env(safe-area-inset-bottom));
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

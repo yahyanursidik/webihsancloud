@@ -1,6 +1,15 @@
 ---
-import { Menu, X } from "@lucide/astro";
+import { Building2, HeartHandshake, House, Layers, LogIn } from "@lucide/astro";
 import Logo from "./Logo.astro";
+
+const pathname = Astro.url.pathname;
+const mobileItems = [
+  { label: "Beranda", href: "/", icon: House, active: pathname === "/" },
+  { label: "Solusi", href: "/#solusi", icon: Layers, active: false },
+  { label: "Daftar", href: "/daftar", icon: Building2, active: pathname === "/daftar" || pathname === "/daftar/" },
+  { label: "Donasi", href: "/donasi", icon: HeartHandshake, active: pathname === "/donasi" || pathname === "/donasi/" },
+  { label: "Masuk", href: "https://app.ihsancloud.id", icon: LogIn, active: false },
+];
 ---
 
 <div class="announcement">
@@ -26,45 +35,18 @@ import Logo from "./Logo.astro";
       <a class="button button-primary" href="/daftar">Daftarkan Lembaga</a>
       <a class="donate-link" href="/donasi">Jadi Donatur</a>
     </div>
-    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Buka navigasi">
-      <Menu class="menu-icon" size={22} aria-hidden="true" />
-      <X class="close-icon" size={22} aria-hidden="true" />
-    </button>
-  </div>
-  <div id="mobile-menu" class="mobile-menu" hidden>
-    <nav class="container" aria-label="Navigasi seluler">
-      <a href="/#tentang">Tentang</a>
-      <a href="/#solusi">Solusi</a>
-      <a href="/#produk">Produk</a>
-      <a href="/#dampak">Dampak</a>
-      <a href="/keberlanjutan">Keberlanjutan</a>
-      <a href="/#faq">FAQ</a>
-      <div class="mobile-actions">
-        <a class="button button-primary" href="/daftar">Daftarkan Lembaga</a>
-        <a class="button button-secondary" href="/donasi">Jadi Donatur</a>
-      </div>
-    </nav>
+    <a class="mobile-donate" href="/donasi">Jadi Donatur</a>
   </div>
 </header>
 
-<script>
-  const toggle = document.querySelector<HTMLButtonElement>(".menu-toggle");
-  const menu = document.querySelector<HTMLElement>("#mobile-menu");
-
-  toggle?.addEventListener("click", () => {
-    const expanded = toggle.getAttribute("aria-expanded") === "true";
-    toggle.setAttribute("aria-expanded", String(!expanded));
-    toggle.setAttribute("aria-label", expanded ? "Buka navigasi" : "Tutup navigasi");
-    if (menu) menu.hidden = expanded;
-  });
-
-  menu?.querySelectorAll("a").forEach((link) => {
-    link.addEventListener("click", () => {
-      toggle?.setAttribute("aria-expanded", "false");
-      if (menu) menu.hidden = true;
-    });
-  });
-</script>
+<nav class="mobile-bottom-nav" aria-label="Navigasi utama seluler">
+  {mobileItems.map(({ label, href, icon: Icon, active }) => (
+    <a class:list={{ primary: label === "Daftar", active }} href={href} aria-current={active ? "page" : undefined}>
+      <span class="mobile-icon"><Icon size={19} stroke-width={1.9} aria-hidden="true" /></span>
+      <span>{label}</span>
+    </a>
+  ))}
+</nav>
 
 <style>
   .announcement {
@@ -93,13 +75,13 @@ import Logo from "./Logo.astro";
     z-index: 50;
     top: 0;
     border-bottom: 1px solid var(--line);
-    background: rgba(247, 244, 236, 0.92);
+    background: rgba(247, 244, 236, 0.94);
     backdrop-filter: blur(14px);
   }
 
   .nav-shell {
     display: flex;
-    min-height: 74px;
+    min-height: 68px;
     align-items: center;
     justify-content: space-between;
     gap: 1.2rem;
@@ -110,58 +92,77 @@ import Logo from "./Logo.astro";
     display: none;
   }
 
-  .menu-toggle {
+  .mobile-donate {
+    border-bottom: 1px solid #8a703b;
+    color: #765f2e;
+    font-size: 0.72rem;
+    font-weight: 800;
+  }
+
+  .mobile-bottom-nav {
+    position: fixed;
+    z-index: 70;
+    right: 0;
+    bottom: 0;
+    left: 0;
     display: grid;
-    width: 42px;
-    height: 42px;
+    min-height: 68px;
+    grid-template-columns: repeat(5, 1fr);
+    align-items: end;
+    border-top: 1px solid rgba(38, 55, 45, 0.15);
+    background: rgba(255, 253, 248, 0.96);
+    padding: 0.45rem 0.35rem max(0.4rem, env(safe-area-inset-bottom));
+    box-shadow: 0 -12px 34px rgba(31, 47, 38, 0.12);
+    backdrop-filter: blur(16px);
+  }
+
+  .mobile-bottom-nav a {
+    display: grid;
+    min-width: 0;
+    justify-items: center;
+    gap: 0.2rem;
+    color: #6d766f;
+    font-size: 0.61rem;
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  .mobile-bottom-nav a.active {
+    color: var(--olive);
+  }
+
+  .mobile-icon {
+    display: grid;
+    width: 34px;
+    height: 30px;
     place-items: center;
-    border: 1px solid var(--line);
-    border-radius: 0.5rem;
-    background: transparent;
+    border-radius: 0.65rem;
+  }
+
+  .mobile-bottom-nav a.active .mobile-icon {
+    background: rgba(38, 55, 45, 0.09);
+  }
+
+  .mobile-bottom-nav a.primary {
     color: var(--olive);
   }
 
-  .close-icon {
-    display: none;
-  }
-
-  .menu-toggle[aria-expanded="true"] .menu-icon {
-    display: none;
-  }
-
-  .menu-toggle[aria-expanded="true"] .close-icon {
-    display: block;
-  }
-
-  .mobile-menu {
-    border-top: 1px solid var(--line);
-    background: var(--ivory);
-  }
-
-  .mobile-menu[hidden] {
-    display: none;
-  }
-
-  .mobile-menu nav {
-    display: grid;
-    gap: 0;
-    padding-block: 0.6rem 1.4rem;
-  }
-
-  .mobile-menu nav > a {
-    border-bottom: 1px solid var(--line);
-    padding: 0.8rem 0;
-    color: var(--olive);
-    font-weight: 650;
-  }
-
-  .mobile-actions {
-    display: grid;
-    gap: 0.65rem;
-    padding-top: 1rem;
+  .mobile-bottom-nav a.primary .mobile-icon {
+    width: 46px;
+    height: 46px;
+    margin-top: -1.15rem;
+    border: 4px solid var(--ivory);
+    border-radius: 50%;
+    background: var(--olive);
+    color: var(--ivory);
+    box-shadow: 0 8px 20px rgba(38, 55, 45, 0.26);
   }
 
   @media (min-width: 980px) {
+    .nav-shell {
+      min-height: 76px;
+    }
+
     .desktop-nav,
     .desktop-actions {
       display: flex;
@@ -203,8 +204,8 @@ import Logo from "./Logo.astro";
       color: #765f2e;
     }
 
-    .menu-toggle,
-    .mobile-menu {
+    .mobile-donate,
+    .mobile-bottom-nav {
       display: none;
     }
   }

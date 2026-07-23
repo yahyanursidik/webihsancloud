@@ -3,74 +3,61 @@ const { light = false } = Astro.props;
 ---
 
 <a class:list={["logo", { light }]} href="/" aria-label="IhsanCloud, halaman utama">
-  <span class="logo-mark" aria-hidden="true">
-    <span></span><span></span>
-  </span>
-  <span class="logo-copy">
-    <strong>IhsanCloud</strong>
-    <small>by Ihsanul Adab</small>
+  <span class="logo-window">
+    <img
+      src="/brand/ihsancloud-logo.png"
+      width="1536"
+      height="1024"
+      alt="IhsanCloud"
+      loading="eager"
+      decoding="async"
+    />
   </span>
 </a>
 
 <style>
   .logo {
     display: inline-flex;
+    flex: 0 0 auto;
     align-items: center;
-    gap: 0.7rem;
-    color: var(--olive);
   }
 
-  .logo-mark {
+  .logo-window {
     position: relative;
-    display: grid;
-    width: 2rem;
-    height: 2rem;
-    grid-template-columns: 1fr 1fr;
-    gap: 0.22rem;
-    border-radius: 0.45rem;
-    background: var(--olive);
-    padding: 0.43rem;
+    display: block;
+    overflow: hidden;
+    width: 172px;
+    height: 42px;
+    border-radius: 0.35rem;
+    background: #fff;
   }
 
-  .logo-mark::after {
+  .logo-window img {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 0.34rem;
-    height: 0.34rem;
-    content: "";
-    transform: translate(-50%, -50%);
-    background: var(--gold);
-  }
-
-  .logo-mark span {
-    background: var(--ivory);
-  }
-
-  .logo-copy {
-    display: grid;
-    line-height: 1;
-  }
-
-  .logo-copy strong {
-    font-family: "Manrope Variable", "Manrope", sans-serif;
-    font-size: 1rem;
-    letter-spacing: -0.025em;
-  }
-
-  .logo-copy small {
-    margin-top: 0.27rem;
-    font-size: 0.58rem;
-    letter-spacing: 0.06em;
-    opacity: 0.66;
+    top: -47px;
+    left: -20px;
+    width: 206px;
+    max-width: none;
+    height: auto;
   }
 
   .light {
-    color: var(--ivory);
+    border: 1px solid rgba(247, 244, 236, 0.18);
+    border-radius: 0.5rem;
+    background: #fff;
+    padding: 0.12rem 0.35rem;
   }
 
-  .light .logo-mark {
-    border: 1px solid rgba(247, 244, 236, 0.42);
-    background: rgba(247, 244, 236, 0.08);
+  @media (max-width: 440px) {
+    .logo-window {
+      width: 153px;
+      height: 38px;
+    }
+
+    .logo-window img {
+      top: -42px;
+      left: -18px;
+      width: 184px;
+    }
   }
 </style>
